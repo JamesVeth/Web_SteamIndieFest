@@ -3,70 +3,120 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #171D25; /* Main background color */
-    color: #ffffff; /* Light text for contrast */
-    scroll-behavior: smooth; /* Smooth scrolling between sections */
+}
+
+/* Imported Fonts */
+
+@font-face {
+    font-family: 'MonospaceRegular';
+    src: url('fonts/monospace/Monospace.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MonospaceBold';
+    src: url('fonts/monospace/MonospaceBold.ttf') format('truetype');
+    font-weight: bold; /* 700 weight */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MotivaSansRegular';
+    src: url('fonts/motiva-sans/MotivaSansRegular.woff.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'MotivaSansBold';
+    src: url('fonts/motiva-sans/MotivaSansBold.woff.ttf') format('truetype');
+    font-weight: bold; /* 700 weight */
+    font-style: normal;
+}
+@font-face {
+    font-family: 'FlinkNeueRegular';
+    src: url('fonts/flink-neue/FlinkNeueTest-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'FlinkNeueItalic';
+    src: url('fonts/flink-neue/FlinkNeueTest-LightIt.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'CodeSaver';
+    src: url('fonts/code_saver/CodeSaver-Regular.otf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    font-family: 'FlinkNeueItalic',Arial, sans-serif;
+    background-color: #171D25; 
+    color: #ffffff; 
+    scroll-behavior: smooth; 
     overflow-x: hidden; /* Prevent horizontal scroll from navbar */
-  }
-  
-  /* Navbar Styles */
-  .navbar {
+}
+
+
+.navbar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 60px; /* Square logo size */
-    height: 60px;
-    /* background-color: #1F2A37; */
-    z-index: 10;
+    width: 100px; /* Square logo size */
+    height: 100px;
+
+    z-index: 10; /* Place Logo above everything else */
+
+    /* Use Flex to Layou the Menu */
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    border-radius: 0 8px 8px 0; /* Rounded edge on the right */
-    transition: background-color 0.3s ease;
-  }
-  
-  .navbar:hover {
-    background-color: #ffffff; /* Slightly lighter on hover */
-  }
-
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  /* Pop-Out Menu */
-/* Pop-Out Menu */
-.navbar ul {
-  position: fixed;
-  top: 0;
-  left: -250px; /* Initially hidden */
-  width: 250px; /* Pop-out menu width */
-  height: 100vh; /* Full height */
-  background-color: rgb(58, 58, 58); /* Translucent background */
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  list-style: none;
-  transition: left 0.4s ease; /* Smooth animation */
-  z-index: 100; /* Ensure it sits above other content */
+    
+    /* Animate how the button background appears when hovered over */
+    transition: background-color 0.5s ease;
 }
 
-  
-  .navbar.active ul {
+.navbar:hover {
+    background-color: #ffffff; /* Slightly lighter on hover */
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+/* Pop-Out Menu */
+/* Pop-Out Menu */
+.navbar ul {
+position: fixed;
+top: 0;
+left: -250px; /* Initially hidden */
+width: 250px; /* Pop-out menu width */
+height: 100vh; /* Full height */
+background-color: rgb(58, 58, 58); /* Translucent background */
+box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+
+display: flex;
+flex-direction: column;
+padding: 20px;
+list-style: none;
+transition: left 0.4s ease; /* Smooth animation */
+z-index: 100; /* Ensure it sits above other content */
+}
+
+
+.navbar.active ul {
     left: 0; /* Menu slides into view */
-  }
-  
-  .navbar ul li {
+}
+
+.navbar ul li {
     margin: 10px 0;
     text-align: center; /* Centre the text within the block */
-  }
-  
-  .navbar ul li a {
+}
+
+.navbar ul li a {
     display: block; /* Make the entire link a block element */
     width: 100%; /* Full width of the parent li */
     padding: 15px 20px; /* Add padding for a button-like feel */
@@ -76,47 +126,47 @@
     text-decoration: none; /* Remove underline from the link text */
     font-size: 18px; /* Adjust font size */
     transition: background-color 0.3s ease, colour 0.3s ease; /* Smooth hover effect */
-  }
-  
-  .navbar ul li a:hover {
-    background-color: #FFA500; /* Highlight colour on hover */
+}
+
+.navbar ul li a:hover {
+    background-color: #03ff25; /* Highlight colour on hover */
     color: #000000; /* Text colour on hover */
-  }
-  
-  
-  .navbar img {
+}
+
+
+.navbar img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain; /* Ensures the image scales without distortion */
-  }
-  /* Section Styles */
-  section {
+}
+/* Section Styles */
+section {
     min-height: 100vh; /* Each section fills at least one screen */
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
     border-bottom: 1px solid #2B3B4A; /* Optional: subtle border for separation */
-  }
+}
 
-  /* Style for odd sections (darker background) */
-  section:nth-child(odd) {
+/* Style for odd sections (darker background) */
+section:nth-child(odd) {
     background-color: #329718; /* Main darker background color */
     color: #FFFFFF; /* Light text for contrast */
-  }
+}
 
-  /* Style for even sections (lighter background) */
-  section:nth-child(even) {
+/* Style for even sections (lighter background) */
+section:nth-child(even) {
     background-color: #1F2A37; /* Slightly lighter background color */
     color: #FFFFFF; /* Light text for contrast */
-  }
+}
 
-  /* Add unique colors for other sections as needed */
-  
-  /* Responsive Design */
-  @media (max-width: 600px) {
+/* Add unique colors for other sections as needed */
+
+/* Responsive Design */
+@media (max-width: 600px) {
+
     .navbar ul li a {
-      font-size: 30px; /* Slightly smaller text for mobile */
+    font-size: 1.5rem; /* Slightly smaller text for mobile */
     }
-  }
-  
+}
