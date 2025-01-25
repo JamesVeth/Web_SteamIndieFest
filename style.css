@@ -20,7 +20,7 @@
     left: 0;
     width: 60px; /* Square logo size */
     height: 60px;
-    background-color: #1F2A37; /* Lighter navbar background color */
+    /* background-color: #1F2A37; */
     z-index: 10;
     display: flex;
     justify-content: center;
@@ -31,7 +31,7 @@
   }
   
   .navbar:hover {
-    background-color: #2B3B4A; /* Slightly lighter on hover */
+    background-color: #ffffff; /* Slightly lighter on hover */
   }
 
   
@@ -46,7 +46,7 @@
   left: -250px; /* Initially hidden */
   width: 250px; /* Pop-out menu width */
   height: 100vh; /* Full height */
-  background-color: rgba(54, 165, 7, 0.9); /* Translucent background */
+  background-color: rgb(58, 58, 58); /* Translucent background */
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
   display: flex;
   flex-direction: column;
@@ -62,21 +62,33 @@
   }
   
   .navbar ul li {
-    margin: 20px 0;
+    margin: 10px 0;
+    text-align: center; /* Centre the text within the block */
   }
   
   .navbar ul li a {
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    display: block; /* Make the entire link a block element */
+    width: 100%; /* Full width of the parent li */
+    padding: 15px 20px; /* Add padding for a button-like feel */
+    background-color: #333333; /* Button background colour */
+    color: #ffffff; /* Button text colour */
+    border-radius: 8px; /* Rounded corners for a button-like feel */
+    text-decoration: none; /* Remove underline from the link text */
+    font-size: 18px; /* Adjust font size */
+    transition: background-color 0.3s ease, colour 0.3s ease; /* Smooth hover effect */
   }
   
   .navbar ul li a:hover {
-    color: #FFA500; /* Highlight color for links */
+    background-color: #FFA500; /* Highlight colour on hover */
+    color: #000000; /* Text colour on hover */
   }
   
+  
+  .navbar img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures the image scales without distortion */
+  }
   /* Section Styles */
   section {
     min-height: 100vh; /* Each section fills at least one screen */
@@ -102,7 +114,7 @@
   /* Add unique colors for other sections as needed */
   
   /* Responsive Design */
-  @media (max-width: 768px) {
+  @media (max-width: 600px) {
     .navbar ul li a {
       font-size: 30px; /* Slightly smaller text for mobile */
     }
