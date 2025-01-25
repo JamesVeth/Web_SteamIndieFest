@@ -33,7 +33,11 @@
   .navbar:hover {
     background-color: #2B3B4A; /* Slightly lighter on hover */
   }
+
   
+  html {
+    scroll-behavior: smooth;
+  }
   /* Pop-Out Menu */
 /* Pop-Out Menu */
 .navbar ul {
