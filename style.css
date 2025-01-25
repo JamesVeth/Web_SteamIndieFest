@@ -90,20 +90,20 @@ html {
 /* Pop-Out Menu */
 /* Pop-Out Menu */
 .navbar ul {
-position: fixed;
-top: 0;
-left: -250px; /* Initially hidden */
-width: 250px; /* Pop-out menu width */
-height: 100vh; /* Full height */
-background-color: rgb(58, 58, 58); /* Translucent background */
-box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden */
+    width: 250px; /* Pop-out menu width */
+    height: 100vh; /* Full height */
+    background-color: rgb(58, 58, 58); /* Translucent background */
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
 
-display: flex;
-flex-direction: column;
-padding: 20px;
-list-style: none;
-transition: left 0.4s ease; /* Smooth animation */
-z-index: 100; /* Ensure it sits above other content */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    list-style: none;
+    transition: left 0.4s ease; /* Smooth animation */
+    z-index: 100; /* Ensure it sits above other content */
 }
 
 
