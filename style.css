@@ -1,3 +1,33 @@
+:root {
+    /* Primary Colours */
+    --primary-accent: #03ff25;
+    --primary-text: #000000;
+    --primary-background: #ffffff;
+
+    /* Background Colours */
+    --page-background: #171D25;
+    --odd-section-background: #329718;
+    --even-section-background: #1F2A37;
+    --form-background: #2B3B4A;
+
+    /* Hover/Focus Colours */
+    --button-hover: #028a19;
+    --focus-border: #03ff25; /* Same as primary accent */
+
+    /* Neutral Tones and Shadows */
+    --input-border: #5C6A72;
+    --table-row-background: #3E4A58;
+    --shadow: rgba(0, 0, 0, 0.5);
+
+    /* Navbar Colours */
+    --navbar-link-background: #333333;
+    --navbar-menu-background: #3A3A3A;
+
+    /* Schedule Dots */
+    --inactive-dot: #888888;
+}
+
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -49,8 +79,8 @@
 
 body {
     font-family: 'FlinkNeueItalic', Arial, sans-serif;
-    background-color: #171D25; 
-    color: #ffffff; 
+    background-color: var(--page-background); 
+    color: var(--primary-background); 
     scroll-behavior: smooth; 
     overflow-x: hidden;
 }
@@ -70,7 +100,7 @@ body {
 }
 
 .navbar:hover {
-    background-color: #ffffff; 
+    background-color: var(--primary-background); 
 }
 
 html {
@@ -83,8 +113,8 @@ html {
     left: -250px;
     width: 250px;
     height: 100vh;
-    background-color: rgb(58, 58, 58);
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
+    background-color: var(--page-background);
+    box-shadow: 4px 0 10px var(--shadow);
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -106,8 +136,8 @@ html {
     display: block;
     width: 100%;
     padding: 15px 20px;
-    background-color: #333333;
-    color: #ffffff;
+    background-color: var(--form-background);
+    color: var(--primary-background);
     border-radius: 8px;
     text-decoration: none;
     font-size: 18px;
@@ -115,8 +145,8 @@ html {
 }
 
 .navbar ul li a:hover {
-    background-color: #03ff25;
-    color: #000000;
+    background-color: var(--primary-accent);
+    color: var(--primary-text);
 }
 
 .navbar img {
@@ -132,39 +162,33 @@ section {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #2B3B4A;
+    border-bottom: 1px solid var(--form-background);
 }
 
 section:nth-child(odd) {
-    background-color: #329718;
-    color: #FFFFFF;
+    background-color: var(--odd-section-background);
+    color: var(--primary-background);
 }
 
 section:nth-child(even) {
-    background-color: #1F2A37;
-    color: #FFFFFF;
-}
-
-@media (max-width: 600px) {
-    .navbar ul li a {
-        font-size: 1.5rem;
-    }
+    background-color: var(--even-section-background);
+    color: var(--primary-background);
 }
 
 /* Register and Contact form styles */
 #register form, #contact form {
-    background-color: #2B3B4A;
+    background-color: var(--form-background);
     padding: 30px;
     border-radius: 8px;
     max-width: 500px;
     margin: 20px auto;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 6px var(--shadow);
 }
 
 #register label, #contact label {
     font-family: 'MotivaSansRegular', Arial, sans-serif;
     font-size: 1rem;
-    color: #FFFFFF;
+    color: var(--primary-background);
     margin-bottom: 8px;
     display: block;
 }
@@ -174,9 +198,9 @@ section:nth-child(even) {
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 8px;
-    border: 1px solid #5C6A72;
-    background-color: #1F2A37;
-    color: #FFFFFF;
+    border: 1px solid var(--input-border);
+    background-color: var(--even-section-background);
+    color: var(--primary-background);
     font-size: 1rem;
 }
 
@@ -188,8 +212,8 @@ section:nth-child(even) {
 #register button, #contact button {
     width: 100%;
     padding: 12px;
-    background-color: #03ff25;
-    color: #000000;
+    background-color: var(--primary-accent);
+    color: var(--primary-text);
     border: none;
     border-radius: 8px;
     font-size: 1.2rem;
@@ -198,23 +222,12 @@ section:nth-child(even) {
 }
 
 #register button:hover, #contact button:hover {
-    background-color: #028a19;
+    background-color: var(--button-hover);
 }
 
 #register input:focus, #contact input:focus, #contact textarea:focus {
-    border-color: #03ff25;
+    border-color: var(--focus-border);
     outline: none;
-}
-
-@media (max-width: 600px) {
-    #register form, #contact form {
-        padding: 20px;
-        width: 90%;
-    }
-
-    #register button, #contact button {
-        font-size: 1.1rem;
-    }
 }
 
 /* Schedule Section */
@@ -224,13 +237,13 @@ section:nth-child(even) {
 }
 
 h2 {
-    text-align: center;
+    text-align: centre;
     font-size: 2.5rem;
     margin-bottom: 40px;
 }
 
 .schedule-nav {
-    text-align: center;
+    text-align: centre;
     margin-bottom: 30px;
 }
 
@@ -239,21 +252,21 @@ h2 {
     height: 12px;
     width: 12px;
     border-radius: 50%;
-    background-color: #888888;
+    background-color: var(--inactive-dot);
     margin: 0 5px;
     cursor: pointer;
 }
 
 .dot.active {
-    background-color: #03ff25;
+    background-color: var(--primary-accent);
 }
 
 .schedule-table {
     display: none;
     padding: 20px;
-    background-color: #2B3B4A;
+    background-color: var(--form-background);
     border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 10px var(--shadow);
     margin-bottom: 40px;
 }
 
@@ -268,12 +281,12 @@ h2 {
 }
 
 .schedule-table th {
-    background-color: #1F2A37;
-    color: #ffffff;
+    background-color: var(--even-section-background);
+    color: var(--primary-background);
 }
 
 .schedule-table td {
-    background-color: #3E4A58;
+    background-color: var(--table-row-background);
 }
 
 .schedule-table td:first-child {
@@ -285,13 +298,26 @@ h2 {
 }
 
 h3 {
-    text-align: center;
+    text-align: centre;
     font-size: 2rem;
     margin-bottom: 20px;
 }
 
-/* Swipeable Layout (Mobile) */
-@media (max-width: 768px) {
+/* Consolidated Media Query (600px) */
+@media (max-width: 600px) {
+    .navbar ul li a {
+        font-size: 1.5rem;
+    }
+
+    #register form, #contact form {
+        padding: 20px;
+        width: 90%;
+    }
+
+    #register button, #contact button {
+        font-size: 1.1rem;
+    }
+
     .schedule-table {
         display: block;
     }
