@@ -231,10 +231,6 @@ section:nth-child(even) {
 }
 
 /* Schedule Section */
-#schedule {
-    padding: 40px;
-    margin-top: 60px;
-}
 
 h2 {
     text-align: centre;
