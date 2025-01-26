@@ -1,27 +1,58 @@
 const navbar = document.querySelector('.navbar');
+const scheduleNavDots = document.querySelectorAll('.schedule-nav .dot');
+const scheduleTables = document.querySelectorAll('.schedule-table');
 
-// Toggle the pop-out menu for the navbar
+let currentDay = 0; // Tracks the current active schedule day
+
+// Navbar toggle functionality
 navbar.addEventListener('click', () => {
-  navbar.classList.toggle('active');
+    navbar.classList.toggle('active');
 });
 
-// Schedule navigation dots functionality
-const dots = document.querySelectorAll('.schedule-nav .dot'); // Select all day navigation dots
-const scheduleTables = document.querySelectorAll('.schedule-table'); // Select all schedule tables
+// Function to update schedule table display
+function updateSchedule(dayIndex) {
+    scheduleTables.forEach((table, index) => {
+        table.style.display = index === dayIndex ? 'block' : 'none';
+    });
 
-dots.forEach(dot => {
-  dot.addEventListener('click', () => {
-    const day = dot.getAttribute('data-day'); // Get the day (day-1, day-2, day-3)
-    
-    // Remove the 'active' class from all dots and tables
-    dots.forEach(d => d.classList.remove('active'));
-    scheduleTables.forEach(table => table.style.display = 'none');
-    
-    // Add the 'active' class to the clicked dot and display the corresponding table
-    dot.classList.add('active');
-    document.getElementById(day).style.display = 'block';
-  });
+    scheduleNavDots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === dayIndex);
+    });
+}
+
+// Initialise first day as active
+updateSchedule(currentDay);
+
+// Add click events to navigation dots
+scheduleNavDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentDay = index;
+        updateSchedule(currentDay);
+    });
 });
 
-// Initially display Day 1
-document.getElementById('day-1').style.display = 'block';
+// Swipe functionality for schedule
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleSwipe() {
+    if (touchEndX < touchStartX) {
+        // Swipe left - go to next day
+        currentDay = (currentDay + 1) % scheduleTables.length;
+    } else if (touchEndX > touchStartX) {
+        // Swipe right - go to previous day
+        currentDay = (currentDay - 1 + scheduleTables.length) % scheduleTables.length;
+    }
+    updateSchedule(currentDay);
+}
+
+scheduleTables.forEach((table) => {
+    table.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    table.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+});
