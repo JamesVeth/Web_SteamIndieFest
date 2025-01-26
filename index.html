@@ -16,8 +16,7 @@
             <li><a href="#about">About</a></li>
             <li><a href="#games">Games</a></li>
             <li><a href="#schedule">Schedule</a></li>
-            <li><a href="#speakers">Speakers</a></li>
-            <li><a href="#exhibitors">Exhibitors</a></li>
+            <li><a href="#register">Register</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -41,27 +40,179 @@
     </section>
 
     <!-- Schedule Section -->
+<!-- Schedule Container -->
     <section id="schedule">
         <h2>Event Schedule</h2>
-        <p>Check out the schedule for all festival events.</p>
-    </section>
+        
+        <!-- Day Navigation Dots -->
+        <div class="schedule-nav">
+            <span class="dot active" data-day="day-1"></span>
+            <span class="dot" data-day="day-2"></span>
+            <span class="dot" data-day="day-3"></span>
+        </div>
+        
+        <!-- Day 1 Schedule -->
+        <div class="schedule-table" id="day-1">
+            <h3>February 3, 2025</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Event Name</th>
+                        <th>Event Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:00 AM</td>
+                        <td>Opening Ceremony</td>
+                        <td>Opening Show</td>
+                    </tr>
+                    <tr>
+                        <td>10:00 AM</td>
+                        <td>Panel: The Future of Indie Games on Steam</td>
+                        <td>Panel</td>
+                    </tr>
+                    <tr>
+                        <td>12:00 PM</td>
+                        <td>Indie Games Spotlight</td>
+                        <td>Showcase</td>
+                    </tr>
+                    <tr>
+                        <td>3:00 PM</td>
+                        <td>Steam Deck Panel with Pierre Loup Griffais and Lawrence Yang</td>
+                        <td>Panel</td>
+                    </tr>
+                    <tr>
+                        <td>5:00 PM</td>
+                        <td>Closing Show: Day 1 Recap</td>
+                        <td>Closing Event</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 
-    <!-- Speakers Section -->
-    <section id="speakers">
-        <h2>Speakers</h2>
-        <p>Meet the incredible developers, artists, and industry experts.</p>
+        <!-- Day 2 Schedule -->
+        <div class="schedule-table" id="day-2">
+            <h3>February 4, 2025</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Event Name</th>
+                        <th>Event Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:00 AM</td>
+                        <td>Panel: Indie Games Publishing on Steam</td>
+                        <td>Panel</td>
+                    </tr>
+                    <tr>
+                        <td>11:00 AM</td>
+                        <td>Concert: Indie Game Music Live</td>
+                        <td>Concert</td>
+                    </tr>
+                    <tr>
+                        <td>1:00 PM</td>
+                        <td>Roundtable: Designing for Indie Game Consoles</td>
+                        <td>Roundtable</td>
+                    </tr>
+                    <tr>
+                        <td>3:00 PM</td>
+                        <td>Indie Game Showcase</td>
+                        <td>Showcase</td>
+                    </tr>
+                    <tr>
+                        <td>5:00 PM</td>
+                        <td>Closing Show: Day 2 Highlights</td>
+                        <td>Closing Event</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Day 3 Schedule -->
+        <div class="schedule-table" id="day-3">
+            <h3>February 5, 2025</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Event Name</th>
+                        <th>Event Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>9:00 AM</td>
+                        <td>Panel: Indie Game Design Secrets</td>
+                        <td>Panel</td>
+                    </tr>
+                    <tr>
+                        <td>11:00 AM</td>
+                        <td>Concert: Indie Game Music Live</td>
+                        <td>Concert</td>
+                    </tr>
+                    <tr>
+                        <td>1:00 PM</td>
+                        <td>Roundtable: Indie Game Monetisation</td>
+                        <td>Roundtable</td>
+                    </tr>
+                    <tr>
+                        <td>3:00 PM</td>
+                        <td>Steam Deck and Indie Games</td>
+                        <td>Panel</td>
+                    </tr>
+                    <tr>
+                        <td>5:00 PM</td>
+                        <td>Closing Ceremony: Festival Recap</td>
+                        <td>Closing Event</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 
     <!-- Exhibitors Section -->
-    <section id="exhibitors">
-        <h2>Exhibitors</h2>
-        <p>Explore the booths and companies participating in the festival.</p>
+    <section id="register">
+        <h2>Register</h2>
+        <p>Get Your All-Access Pass Now!</p>
+        <form action="#" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name">
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+            
+            <label for="tickets">Number of Tickets:</label>
+            <input type="number" id="tickets" name="tickets" min="1" value="1">
+            
+            <button type="submit">Register</button>
+        </form>
+
     </section>
 
     <!-- Contact Section -->
     <section id="contact">
         <h2>Contact Us</h2>
         <p>Have questions? Get in touch with the organizers.</p>
+        <form action="#" method="POST">
+            <label for="contact-name">Name:</label>
+            <input type="text" id="contact-name" name="name" required placeholder="Enter your name">
+            
+            <label for="contact-email">Email:</label>
+            <input type="email" id="contact-email" name="email" required placeholder="Enter your email">
+            
+            <label for="contact-subject">Subject:</label>
+            <input type="text" id="contact-subject" name="subject" required placeholder="Enter the subject">
+            
+            <label for="contact-message">Message:</label>
+            <textarea id="contact-message" name="message" rows="5" required placeholder="Enter your message"></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
     </section>
         
     <script src="script.js"></script>

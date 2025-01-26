@@ -1,11 +1,8 @@
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
-/* Imported Fonts */
 
 @font-face {
     font-family: 'MonospaceRegular';
@@ -16,7 +13,7 @@
 @font-face {
     font-family: 'MonospaceBold';
     src: url('fonts/monospace/MonospaceBold.ttf') format('truetype');
-    font-weight: bold; /* 700 weight */
+    font-weight: bold;
     font-style: normal;
 }
 @font-face {
@@ -28,7 +25,7 @@
 @font-face {
     font-family: 'MotivaSansBold';
     src: url('fonts/motiva-sans/MotivaSansBold.woff.ttf') format('truetype');
-    font-weight: bold; /* 700 weight */
+    font-weight: bold;
     font-style: normal;
 }
 @font-face {
@@ -50,123 +47,262 @@
     font-style: normal;
 }
 
-
 body {
-    font-family: 'FlinkNeueItalic',Arial, sans-serif;
+    font-family: 'FlinkNeueItalic', Arial, sans-serif;
     background-color: #171D25; 
     color: #ffffff; 
     scroll-behavior: smooth; 
-    overflow-x: hidden; /* Prevent horizontal scroll from navbar */
+    overflow-x: hidden;
 }
-
 
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100px; /* Square logo size */
+    width: 100px;
     height: 100px;
-
-    z-index: 10; /* Place Logo above everything else */
-
-    /* Use Flex to Layou the Menu */
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    
-    /* Animate how the button background appears when hovered over */
     transition: background-color 0.5s ease;
 }
 
 .navbar:hover {
-    background-color: #ffffff; /* Slightly lighter on hover */
+    background-color: #ffffff; 
 }
-
 
 html {
     scroll-behavior: smooth;
 }
-/* Pop-Out Menu */
-/* Pop-Out Menu */
+
 .navbar ul {
     position: fixed;
     top: 0;
-    left: -250px; /* Initially hidden */
-    width: 250px; /* Pop-out menu width */
-    height: 100vh; /* Full height */
-    background-color: rgb(58, 58, 58); /* Translucent background */
-    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
-
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: rgb(58, 58, 58);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
     padding: 20px;
     list-style: none;
-    transition: left 0.4s ease; /* Smooth animation */
-    z-index: 100; /* Ensure it sits above other content */
+    transition: left 0.4s ease;
+    z-index: 100;
 }
 
-
 .navbar.active ul {
-    left: 0; /* Menu slides into view */
+    left: 0;
 }
 
 .navbar ul li {
     margin: 10px 0;
-    text-align: center; /* Centre the text within the block */
+    text-align: center;
 }
 
 .navbar ul li a {
-    display: block; /* Make the entire link a block element */
-    width: 100%; /* Full width of the parent li */
-    padding: 15px 20px; /* Add padding for a button-like feel */
-    background-color: #333333; /* Button background colour */
-    color: #ffffff; /* Button text colour */
-    border-radius: 8px; /* Rounded corners for a button-like feel */
-    text-decoration: none; /* Remove underline from the link text */
-    font-size: 18px; /* Adjust font size */
-    transition: background-color 0.3s ease, colour 0.3s ease; /* Smooth hover effect */
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: #333333;
+    color: #ffffff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s ease, colour 0.3s ease;
 }
 
 .navbar ul li a:hover {
-    background-color: #03ff25; /* Highlight colour on hover */
-    color: #000000; /* Text colour on hover */
+    background-color: #03ff25;
+    color: #000000;
 }
-
 
 .navbar img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Ensures the image scales without distortion */
+    object-fit: contain;
 }
-/* Section Styles */
+
 section {
-    min-height: 100vh; /* Each section fills at least one screen */
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid #2B3B4A; /* Optional: subtle border for separation */
+    border-bottom: 1px solid #2B3B4A;
 }
 
-/* Style for odd sections (darker background) */
 section:nth-child(odd) {
-    background-color: #329718; /* Main darker background color */
-    color: #FFFFFF; /* Light text for contrast */
+    background-color: #329718;
+    color: #FFFFFF;
 }
 
-/* Style for even sections (lighter background) */
 section:nth-child(even) {
-    background-color: #1F2A37; /* Slightly lighter background color */
-    color: #FFFFFF; /* Light text for contrast */
+    background-color: #1F2A37;
+    color: #FFFFFF;
 }
 
-/* Add unique colors for other sections as needed */
-
-/* Responsive Design */
 @media (max-width: 600px) {
-
     .navbar ul li a {
-    font-size: 1.5rem; /* Slightly smaller text for mobile */
+        font-size: 1.5rem;
+    }
+}
+
+/* Register and Contact form styles */
+#register form, #contact form {
+    background-color: #2B3B4A;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#register label, #contact label {
+    font-family: 'MotivaSansRegular', Arial, sans-serif;
+    font-size: 1rem;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    display: block;
+}
+
+#register input, #contact input, #contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #5C6A72;
+    background-color: #1F2A37;
+    color: #FFFFFF;
+    font-size: 1rem;
+}
+
+#contact textarea {
+    resize: none;
+    height: 150px;
+}
+
+#register button, #contact button {
+    width: 100%;
+    padding: 12px;
+    background-color: #03ff25;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#register button:hover, #contact button:hover {
+    background-color: #028a19;
+}
+
+#register input:focus, #contact input:focus, #contact textarea:focus {
+    border-color: #03ff25;
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    #register form, #contact form {
+        padding: 20px;
+        width: 90%;
+    }
+
+    #register button, #contact button {
+        font-size: 1.1rem;
+    }
+}
+
+/* Schedule Section */
+#schedule {
+    padding: 40px;
+    margin-top: 60px;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.schedule-nav {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dot {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background-color: #888888;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #03ff25;
+}
+
+.schedule-table {
+    display: none;
+    padding: 20px;
+    background-color: #2B3B4A;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+}
+
+.schedule-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.schedule-table th, .schedule-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.schedule-table th {
+    background-color: #1F2A37;
+    color: #ffffff;
+}
+
+.schedule-table td {
+    background-color: #3E4A58;
+}
+
+.schedule-table td:first-child {
+    width: 150px;
+}
+
+.schedule-table td:last-child {
+    text-transform: capitalize;
+}
+
+h3 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Swipeable Layout (Mobile) */
+@media (max-width: 768px) {
+    .schedule-table {
+        display: block;
+    }
+
+    #day-1, #day-2, #day-3 {
+        display: inline-block;
+        width: 90%;
+        margin: 0 5%;
+        overflow-x: scroll;
+    }
+
+    .schedule-nav {
+        margin-top: 20px;
     }
 }
