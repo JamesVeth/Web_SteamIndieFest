@@ -106,6 +106,28 @@ body {
 html {
     scroll-behavior: smooth;
 }
+.button-general-container{
+    margin: 20px;
+}
+.button-general {
+    font-family: 'MotivaSansBold', Arial, sans-serif;
+    cursor: pointer;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--form-background);
+    color: var(--primary-background);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, colour 0.3s ease;
+    width: auto; /* Prevent buttons from stretching full-width */
+    padding: 10px 20px; /* Adjust padding for better size */
+    font-size: 16px; /* Adjust font size to fit better */
+}
+
+.button-general:hover {
+    background-color: var(--primary-accent);
+    color: var(--primary-text);
+}
 
 .navbar ul {
     position: fixed;
@@ -166,7 +188,7 @@ section {
 }
 
 section:nth-child(odd) {
-    background: linear-gradient(rgba(83, 83, 83, 0.4), rgba(0, 0, 0, 0.4)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(51, 255, 0, 0.20)), 
                 url('images/background.png');
     background-size: cover; /* Ensure the image covers the entire section */
     background-position: center; /* Centre the image */
@@ -176,7 +198,7 @@ section:nth-child(odd) {
 }
 
 section:nth-child(even) {
-    background: linear-gradient(rgba(51, 255, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+    background: linear-gradient(rgba(51, 255, 0, 0.20), rgba(0, 0, 0, 0.60)), 
                 url('images/background.png');
     background-size: cover;
     background-position: center;
@@ -264,8 +286,11 @@ h2 {
 }
 
 .games-nav {
-    text-align: center;
-    margin-bottom: 30px;
+    display: flex; /* Arrange buttons and dots in a row */
+    justify-content: center; /* Centre the content */
+    align-items: center; /* Vertically align items */
+    gap: 20px; /* Add spacing between buttons and the dots */
+    margin-top: 20px; /* Optional: Adjust spacing above/below the navigation */
   }
   
   .games-container {
@@ -296,6 +321,21 @@ h2 {
     width: 40%;
   }
 
+
+  /* Changes  */
+  .games-card {
+      display: flex; /* Keep the container as flex */
+      flex-direction: column; /* Stack the items vertically */
+    }
+    
+    .games-card-header {
+        display: block; /* Force header to be block-level so it starts on a new line */
+        margin-bottom: 10px; /* Optional: space between the header and the rest of the content */
+    }
+    
+    /* Changes  */
+
+  
   @media (max-width:600px) {
     .games-card.active {
         display: flex; /* Display the active card */
@@ -310,8 +350,12 @@ h2 {
   
 
 .schedule-nav {
-    text-align: center;
-    margin-bottom: 30px;
+    display: flex; /* Arrange buttons and dots in a row */
+    margin: auto;
+    justify-content: center; /* Centre the content */
+    align-items: center; /* Vertically align items */
+    gap: 20px; /* Add spacing between buttons and the dots */
+    margin-top: 20px; /* Optional: Adjust spacing above/below the navigation */
 }
 
 .schedule-table {
@@ -378,14 +422,30 @@ h3 {
 
     #day-1, #day-2, #day-3 {
         display: inline-block;
-        width: 90%;
+        width: auto;
         margin: 0 5%;
         overflow-x: scroll;
     }
 
     .schedule-nav {
-        margin-top: 20px;
+        display: flex;
+        margin: 40px;
+        align-items: center; /* Centre-align the elements */
     }
+
+    .games-nav {
+        display: flex;
+        margin: 20px;
+        align-items: center; /* Centre-align the elements */
+        gap: 8px; /* Space between elements */
+    }
+
+    .dots-container {
+        display: flex;
+        justify-content: center; /* Centre the dots horizontally */
+        gap: 5px; /* Space between dots */
+    }
+
 }
 
 /* Consolidated Media Query (600px) */
