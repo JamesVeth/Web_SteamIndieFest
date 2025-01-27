@@ -38,19 +38,18 @@ scheduleNavDots.forEach((dot, index) => {
 
 let currentGame = 0; // Start Game table at 0
 
-// Function to update schedule table display
 function updateGamesTable(gameIndex) {
     gamesTables.forEach((table, index) => {
         table.style.display = index === gameIndex ? 'block' : 'none';
     });
 
-    scheduleNavDots.forEach((dot, index) => {
+    gameNavDots.forEach((dot, index) => {
         dot.classList.toggle('active', index === gameIndex);
     });
 }
 
 // Initialise first day as active
-updateSchedule(currentGame);
+updateGamesTable(currentGame);
 
 // Add click events to navigation dots
 gameNavDots.forEach((dot, index) => {

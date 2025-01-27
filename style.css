@@ -233,13 +233,13 @@ section:nth-child(even) {
 /* Schedule Section */
 
 h2 {
-    text-align: centre;
+    text-align: center;
     font-size: 2.5rem;
     margin-bottom: 40px;
 }
 
 .schedule-nav {
-    text-align: centre;
+    text-align: center;
     margin-bottom: 30px;
 }
 
@@ -261,6 +261,7 @@ h2 {
 
 .games-table {
   display: none;
+  width: 80vw;
   padding: 20px;
   background-color: var(--form-background);
   border-radius: 8px;
@@ -300,6 +301,7 @@ h2 {
 
 .schedule-table {
     display: none;
+    width: 80vw;
     padding: 20px;
     background-color: var(--form-background);
     border-radius: 8px;
@@ -335,7 +337,7 @@ h2 {
 }
 
 h3 {
-    text-align: centre;
+    text-align: center;
     font-size: 2rem;
     margin-bottom: 20px;
 }
@@ -369,4 +371,11 @@ h3 {
     .schedule-nav {
         margin-top: 20px;
     }
+}
+
+/* Consolidated Media Query (600px) */
+@media (min-width: 700px) {
+  #register form, #contact form {
+      width: 90vw;
+  }
 }
