@@ -163,18 +163,28 @@ section {
     align-items: center;
     padding: 20px;
     border-bottom: 1px solid var(--form-background);
+    background-image: ;
 }
 
 section:nth-child(odd) {
-    background-color: var(--odd-section-background);
-    color: var(--primary-background);
+    background: linear-gradient(rgba(83, 83, 83, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('images/background.png');
+    background-size: cover; /* Ensure the image covers the entire section */
+    background-position: center; /* Centre the image */
+    background-repeat: no-repeat; /* Prevent repeating */
+    background-color: var(--odd-section-background); /* Fallback colour */
+    color: var(--primary-background); /* Foreground text colour */
 }
 
 section:nth-child(even) {
-    background-color: var(--even-section-background);
+    background: linear-gradient(rgba(51, 255, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                url('images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--even-section-background); /* Fallback colour */
     color: var(--primary-background);
 }
-
 /* Register and Contact form styles */
 #register form, #contact form {
     background-color: var(--form-background);
@@ -257,17 +267,48 @@ h2 {
 .games-nav {
     text-align: center;
     margin-bottom: 30px;
+  }
+  
+  .games-container {
+    display: flex; /* Flex layout for the cards */
+    overflow: hidden; /* Optional: Hide any overflow if desired */
+    gap: 20px; /* Optional: space between the cards */
+  }
+  
+  .games-card {
+    display: none; /* Default is to hide all cards */
+    width: 80vw; /* Adjust the width as necessary */
+    padding: 20px;
+    background-color: var(--form-background);
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px var(--shadow);
+    margin-bottom: 40px;
+  }
+
+  .games-card.active {
+    display: flex; 
+    flex-direction: row; /* Items are displayed in a row */
+    align-items: flex-start; /* Align items to the top */
+    gap: 10px; /* Optional: space between the cards */
+
 }
 
-.games-card {
-  display: none;
-  width: 80vw;
-  padding: 20px;
-  background-color: var(--form-background);
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px var(--shadow);
-  margin-bottom: 40px;
-}
+  .games-card.active img {
+    width: 40%;
+  }
+
+  @media (max-width:600px) {
+    .games-card.active {
+        display: flex; /* Display the active card */
+        flex-direction:column;
+      }
+      .games-card.active img {
+        width: 90%;
+      }
+  }
+
+
+  
 
 .schedule-nav {
     text-align: center;

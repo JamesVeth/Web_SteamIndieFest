@@ -5,6 +5,7 @@ const scheduleTables = document.querySelectorAll('.schedule-table');
 const gamesCards = document.querySelectorAll('.games-card');
 
 let currentDay = 0; // Tracks the current active schedule day
+let currentGame = 0; // Tracks the current active game card
 
 // Navbar toggle functionality
 navbar.addEventListener('click', () => {
@@ -22,10 +23,10 @@ function updateSchedule(dayIndex) {
     });
 }
 
-// Initialise first day as active
+// Initialise the first schedule day as active
 updateSchedule(currentDay);
 
-// Add click events to navigation dots
+// Add click events to navigation dots for schedule
 scheduleNavDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
         currentDay = index;
@@ -33,28 +34,24 @@ scheduleNavDots.forEach((dot, index) => {
     });
 });
 
-
-
-
-let currentGame = 0; // Start Game table at 0
-
+// Function to update games card display
 function updateGamesCard(gameIndex) {
-    gamesCards.forEach((table, index) => {
-        table.style.display = index === gameIndex ? 'block' : 'none';
+    gamesCards.forEach((card, index) => {
+        card.classList.toggle('active', index === gameIndex); // Show only the selected game card
     });
 
     gameNavDots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === gameIndex);
+        dot.classList.toggle('active', index === gameIndex); // Update active dot
     });
 }
 
-// Initialise first day as active
+// Initialise the first game card as active
 updateGamesCard(currentGame);
 
-// Add click events to navigation dots
+// Add click events to navigation dots for games
 gameNavDots.forEach((dot, index) => {
     dot.addEventListener('click', () => {
         currentGame = index;
-        updateGamesTable(currentGame);
+        updateGamesCard(currentGame);
     });
 });
