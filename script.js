@@ -1,6 +1,8 @@
 const navbar = document.querySelector('.navbar');
 const scheduleNavDots = document.querySelectorAll('.schedule-nav .dot');
+const gameNavDots = document.querySelectorAll('.schedule-nav .dot');
 const scheduleTables = document.querySelectorAll('.schedule-table');
+const gamesTables = document.querySelectorAll('.games-table');
 
 let currentDay = 0; // Tracks the current active schedule day
 
@@ -31,28 +33,29 @@ scheduleNavDots.forEach((dot, index) => {
     });
 });
 
-// Swipe functionality for schedule
-let touchStartX = 0;
-let touchEndX = 0;
 
-function handleSwipe() {
-    if (touchEndX < touchStartX) {
-        // Swipe left - go to next day
-        currentDay = (currentDay + 1) % scheduleTables.length;
-    } else if (touchEndX > touchStartX) {
-        // Swipe right - go to previous day
-        currentDay = (currentDay - 1 + scheduleTables.length) % scheduleTables.length;
-    }
-    updateSchedule(currentDay);
-}
 
-scheduleTables.forEach((table) => {
-    table.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
+
+let currentGame = 0; // Start Game table at 0
+
+// Function to update schedule table display
+function updateGamesTable(gameIndex) {
+    gamesTables.forEach((table, index) => {
+        table.style.display = index === gameIndex ? 'block' : 'none';
     });
 
-    table.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
+    scheduleNavDots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === gameIndex);
+    });
+}
+
+// Initialise first day as active
+updateSchedule(currentGame);
+
+// Add click events to navigation dots
+gameNavDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentGame = index;
+        updateGamesTable(currentGame);
     });
 });

@@ -257,6 +257,47 @@ h2 {
     background-color: var(--primary-accent);
 }
 
+
+
+.games-table {
+  display: none;
+  padding: 20px;
+  background-color: var(--form-background);
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px var(--shadow);
+  margin-bottom: 40px;
+}
+
+.games-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.games-table th, .games-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.games-table th {
+  background-color: var(--even-section-background);
+  color: var(--primary-background);
+}
+
+.games-table td {
+  background-color: var(--table-row-background);
+}
+
+.games-table td:first-child {
+  width: 150px;
+}
+
+.games-table td:last-child {
+  text-transform: capitalize;
+}
+
+
+
+
 .schedule-table {
     display: none;
     padding: 20px;
