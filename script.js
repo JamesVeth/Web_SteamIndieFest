@@ -1,8 +1,8 @@
 const navbar = document.querySelector('.navbar');
 const scheduleNavDots = document.querySelectorAll('.schedule-nav .dot');
-const gameNavDots = document.querySelectorAll('.schedule-nav .dot');
+const gameNavDots = document.querySelectorAll('.games-nav .dot');
 const scheduleTables = document.querySelectorAll('.schedule-table');
-const gamesTables = document.querySelectorAll('.games-table');
+const gamesCards = document.querySelectorAll('.games-card');
 
 let currentDay = 0; // Tracks the current active schedule day
 
@@ -38,8 +38,8 @@ scheduleNavDots.forEach((dot, index) => {
 
 let currentGame = 0; // Start Game table at 0
 
-function updateGamesTable(gameIndex) {
-    gamesTables.forEach((table, index) => {
+function updateGamesCard(gameIndex) {
+    gamesCards.forEach((table, index) => {
         table.style.display = index === gameIndex ? 'block' : 'none';
     });
 
@@ -49,7 +49,7 @@ function updateGamesTable(gameIndex) {
 }
 
 // Initialise first day as active
-updateGamesTable(currentGame);
+updateGamesCard(currentGame);
 
 // Add click events to navigation dots
 gameNavDots.forEach((dot, index) => {

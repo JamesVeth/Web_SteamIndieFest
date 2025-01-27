@@ -238,10 +238,7 @@ h2 {
     margin-bottom: 40px;
 }
 
-.schedule-nav {
-    text-align: center;
-    margin-bottom: 30px;
-}
+
 
 .dot {
     display: inline-block;
@@ -257,9 +254,12 @@ h2 {
     background-color: var(--primary-accent);
 }
 
+.games-nav {
+    text-align: center;
+    margin-bottom: 30px;
+}
 
-
-.games-table {
+.games-card {
   display: none;
   width: 80vw;
   padding: 20px;
@@ -269,35 +269,10 @@ h2 {
   margin-bottom: 40px;
 }
 
-.games-table table {
-  width: 100%;
-  border-collapse: collapse;
+.schedule-nav {
+    text-align: center;
+    margin-bottom: 30px;
 }
-
-.games-table th, .games-table td {
-  padding: 12px 15px;
-  text-align: left;
-}
-
-.games-table th {
-  background-color: var(--even-section-background);
-  color: var(--primary-background);
-}
-
-.games-table td {
-  background-color: var(--table-row-background);
-}
-
-.games-table td:first-child {
-  width: 150px;
-}
-
-.games-table td:last-child {
-  text-transform: capitalize;
-}
-
-
-
 
 .schedule-table {
     display: none;
