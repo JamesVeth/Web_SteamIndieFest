@@ -18,7 +18,6 @@ let currentGame = 0; // Tracks the current active game card
 
 // Touch screen click (ignore mouse clicks)
 navbar.addEventListener('touchstart', (event) => {
-    event.preventDefault(); // Prevents compatibility issues like triggering a click
     navbar.classList.toggle('active');
 });
 
