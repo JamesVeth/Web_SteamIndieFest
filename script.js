@@ -11,14 +11,17 @@ let currentGame = 0; // Tracks the current active game card
 
 // Traditional mouse click, but this interferes with hover
 
-/* navbar.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-}); */
+// navbar.addEventListener('click', () => {
+//     navbar.classList.toggle('active');
+// });
 
 
-// Touch screen click (ignore mouse clicks)
 navbar.addEventListener('touchstart', (event) => {
-    navbar.classList.toggle('active');
+    // Check if the touch happened on the navbar itself, not a child element
+    if (event.target === navbar) {
+        event.preventDefault(); // Prevent accidental double interactions
+        navbar.classList.toggle('active');
+    }
 });
 
 
