@@ -7,9 +7,29 @@ const gamesCards = document.querySelectorAll('.games-card');
 let currentDay = 0; // Tracks the current active schedule day
 let currentGame = 0; // Tracks the current active game card
 
-// Navbar toggle functionality
-navbar.addEventListener('click', () => {
+
+
+// Traditional mouse click, but this interferes with hover
+
+/* navbar.addEventListener('click', () => {
     navbar.classList.toggle('active');
+}); */
+
+
+// Touch screen click (ignore mouse clicks)
+navbar.addEventListener('touchstart', (event) => {
+    event.preventDefault(); // Prevents compatibility issues like triggering a click
+    navbar.classList.toggle('active');
+});
+
+
+// Mouse hover, for desktop, instead of clicks
+navbar.addEventListener('mouseover', () => {
+    navbar.classList.add('active'); // Show navbar
+});
+
+navbar.addEventListener('mouseout', () => {
+    navbar.classList.remove('active'); // Hide navbar
 });
 
 // Function to update schedule table display
