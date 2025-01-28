@@ -11,28 +11,28 @@ let currentGame = 0; // Tracks the current active game card
 
 // Traditional mouse click, but this interferes with hover
 
-// navbar.addEventListener('click', () => {
-//     navbar.classList.toggle('active');
+navbar.addEventListener('click', () => {
+    navbar.classList.toggle('active');
+});
+
+
+// navbar.addEventListener('touchstart', (event) => {
+//     // Check if the touch happened on the navbar itself, not a child element
+//     if (event.target === navbar) {
+//         event.preventDefault(); // Prevent accidental double interactions
+//         navbar.classList.toggle('active');
+//     }
 // });
 
 
-navbar.addEventListener('touchstart', (event) => {
-    // Check if the touch happened on the navbar itself, not a child element
-    if (event.target === navbar) {
-        event.preventDefault(); // Prevent accidental double interactions
-        navbar.classList.toggle('active');
-    }
-});
+// // Mouse hover, for desktop, instead of clicks
+// navbar.addEventListener('mouseover', () => {
+//     navbar.classList.add('active'); // Show navbar
+// });
 
-
-// Mouse hover, for desktop, instead of clicks
-navbar.addEventListener('mouseover', () => {
-    navbar.classList.add('active'); // Show navbar
-});
-
-navbar.addEventListener('mouseout', () => {
-    navbar.classList.remove('active'); // Hide navbar
-});
+// navbar.addEventListener('mouseout', () => {
+//     navbar.classList.remove('active'); // Hide navbar
+// });
 
 // Function to update schedule table display
 function updateSchedule(dayIndex) {
