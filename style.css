@@ -80,7 +80,7 @@
 body {
     font-family: 'FlinkNeueItalic', Arial, sans-serif;
     background-color: var(--page-background); 
-    color: var(--primary-background); 
+    color: var(--primary-background);
     scroll-behavior: smooth; 
     overflow-x: hidden;
 }
@@ -189,7 +189,7 @@ section {
 
 section:nth-child(odd) {
     background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(51, 255, 0, 0.20)), 
-                url('images/background.png');
+                url('./images/background.png');
     background-size: cover; /* Ensure the image covers the entire section */
     background-position: center; /* Centre the image */
     background-repeat: no-repeat; /* Prevent repeating */
@@ -199,7 +199,7 @@ section:nth-child(odd) {
 
 section:nth-child(even) {
     background: linear-gradient(rgba(51, 255, 0, 0.20), rgba(0, 0, 0, 0.60)), 
-                url('images/background.png');
+                url('./images/background.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
