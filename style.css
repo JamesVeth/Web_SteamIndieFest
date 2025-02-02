@@ -4,6 +4,23 @@
     --primary-text: #000000;
     --primary-background: #ffffff;
 
+
+/* Changed Colours */
+
+    --active-accent: #03ff25;
+    --inactive-accent: #5C6A72;
+
+    --background-1st:#171D25;
+    --background-2nd:#5C6A72;
+    --background-3rd:#171D25;
+
+    --text_active: #000000;
+    --text_body: #ffffff;
+
+
+
+
+
     /* Background Colours */
     --page-background: #171D25;
     --odd-section-background: #329718;
