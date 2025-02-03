@@ -1,51 +1,27 @@
 :root {
-    /* Primary Colours */
-    --primary-accent: #03ff25;
-    --primary-text: #000000;
-    --primary-background: #ffffff;
 
-
-/* Changed Colours */
+    /* Changed Colours */
 
     --active-accent: #03ff25;
     --inactive-accent: #5C6A72;
 
-    --background-1st:#171D25;
-    --background-2nd:#5C6A72;
-    --background-3rd:#171D25;
-
+    --background-1st:#2B3B4A;
+    --background-2nd:#171D25;
+    --background-3rd:#3E4A58;
+    
     --text_active: #000000;
     --text_body: #ffffff;
 
-
-
-
-
-    /* Background Colours */
-    --page-background: #171D25;
-    --odd-section-background: #329718;
-    --even-section-background: #1F2A37;
-    --form-background: #2B3B4A;
-
-    /* Hover/Focus Colours */
-    --button-hover: #028a19;
-    --focus-border: #03ff25; /* Same as primary accent */
-
-    /* Neutral Tones and Shadows */
-    --input-border: #5C6A72;
-    --table-row-background: #3E4A58;
+    --button-hover: #ffffff;
+    --inactive-dot: #888888;
     --shadow: rgba(0, 0, 0, 0.5);
 
-    /* Navbar Colours */
-    --navbar-link-background: #333333;
-    --navbar-menu-background: #3A3A3A;
 
-    /* Schedule Dots */
-    --inactive-dot: #888888;
 }
 
 /* Global Reset */
 * {
+    color: var(--text_body);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -117,7 +93,7 @@ body {
 }
 
 .navbar:hover {
-    background-color: var(--primary-background); 
+    background-color: var(--button-hover); 
 }
 
 html {
@@ -131,8 +107,8 @@ html {
     cursor: pointer;
     width: 100%;
     padding: 15px 20px;
-    background-color: var(--form-background);
-    color: var(--primary-background);
+    background-color: var(--background-1st);
+    color: var(--text_body);
     border-radius: 50px;
     text-decoration: none;
     transition: background-color 0.3s ease, colour 0.3s ease;
@@ -142,8 +118,8 @@ html {
 }
 
 .button-general:hover {
-    background-color: var(--primary-accent);
-    color: var(--primary-text);
+    background-color: var(--active-accent);
+    color: var(--text_active);
 }
 
 .navbar ul {
@@ -152,7 +128,7 @@ html {
     left: -250px;
     width: 250px;
     height: 100vh;
-    background-color: var(--page-background);
+    background-color: var(--background-2nd);
     box-shadow: 4px 0 10px var(--shadow);
     display: flex;
     flex-direction: column;
@@ -175,8 +151,8 @@ html {
     display: block;
     width: 100%;
     padding: 15px 20px;
-    background-color: var(--form-background);
-    color: var(--primary-background);
+    background-color: var(--background-1st);
+    color: var(--text_body);
     border-radius: 8px;
     text-decoration: none;
     font-size: 18px;
@@ -184,8 +160,8 @@ html {
 }
 
 .navbar ul li a:hover {
-    background-color: var(--primary-accent);
-    color: var(--primary-text);
+    background-color: var(--active-accent);
+    color: var(--text_active);
 }
 
 .navbar img {
@@ -201,7 +177,7 @@ section {
     justify-content: center;
     align-items: center;
     padding: 20px;
-    border-bottom: 1px solid var(--form-background);
+    border-bottom: 1px solid var(--background-3rd);
 }
 
 section:nth-child(odd) {
@@ -221,11 +197,11 @@ section:nth-child(even) {
     background-position: center;
     background-repeat: no-repeat;
     background-color: var(--even-section-background); /* Fallback colour */
-    color: var(--primary-background);
+    color: var(--text_body);
 }
 /* Register and Contact form styles */
 #register form, #contact form {
-    background-color: var(--form-background);
+    background-color: var(--background-1st);
     padding: 30px;
     border-radius: 8px;
     max-width: 500px;
@@ -236,7 +212,7 @@ section:nth-child(even) {
 #register label, #contact label {
     font-family: 'MotivaSansRegular', Arial, sans-serif;
     font-size: 1rem;
-    color: var(--primary-background);
+    color: var(--text_body);
     margin-bottom: 8px;
     display: block;
 }
@@ -246,9 +222,9 @@ section:nth-child(even) {
     padding: 10px;
     margin-bottom: 15px;
     border-radius: 8px;
-    border: 1px solid var(--input-border);
-    background-color: var(--even-section-background);
-    color: var(--primary-background);
+    border: 1px solid var(--inactive-accent);
+    background-color: var(--background-2nd);
+    color: var(--text_body);
     font-size: 1rem;
 }
 
@@ -260,8 +236,8 @@ section:nth-child(even) {
 #register button, #contact button {
     width: 100%;
     padding: 12px;
-    background-color: var(--primary-accent);
-    color: var(--primary-text);
+    background-color: var(--active-accent);
+    color: var(--text_active);
     border: none;
     border-radius: 8px;
     font-size: 1.2rem;
@@ -274,7 +250,7 @@ section:nth-child(even) {
 }
 
 #register input:focus, #contact input:focus, #contact textarea:focus {
-    border-color: var(--focus-border);
+    border-color: var(--inactive-accent);
     outline: none;
 }
 
@@ -293,34 +269,36 @@ h2 {
     height: 12px;
     width: 12px;
     border-radius: 50%;
-    background-color: var(--inactive-dot);
+    border: var(--button-hover) solid 1.3px;
+    background-color: var(--inactive-accent);
     margin: 0 5px;
     cursor: pointer;
 }
 
 .dot.active {
-    background-color: var(--primary-accent);
+    background-color: var(--active-accent);
 }
 
 .games-nav {
-    display: flex; /* Arrange buttons and dots in a row */
-    justify-content: center; /* Centre the content */
-    align-items: center; /* Vertically align items */
-    gap: 20px; /* Add spacing between buttons and the dots */
-    margin-top: 20px; /* Optional: Adjust spacing above/below the navigation */
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    gap: 20px;
+    margin-top: 20px;
   }
   
   .games-container {
-    display: flex; /* Flex layout for the cards */
-    overflow: hidden; /* Optional: Hide any overflow if desired */
-    gap: 20px; /* Optional: space between the cards */
+    display: flex; 
+    overflow: hidden;
+    gap: 20px;
   }
   
   .games-card {
     display: none; /* Default is to hide all cards */
     width: 80vw; /* Adjust the width as necessary */
     padding: 20px;
-    background-color: var(--form-background);
+    background-color: var(--background-1st);
+    color: var(--text_body);
     border-radius: 8px;
     box-shadow: 0px 4px 10px var(--shadow);
     margin-bottom: 40px;
@@ -358,7 +336,7 @@ h2 {
         display: flex; /* Display the active card */
         flex-direction:column;
       }
-      .games-card.active img {
+    .games-card.active img {
         width: 90%;
       }
   }
@@ -379,7 +357,7 @@ h2 {
     display: none;
     width: 80vw;
     padding: 20px;
-    background-color: var(--form-background);
+    background-color: var(--background-1st);
     border-radius: 8px;
     box-shadow: 0px 4px 10px var(--shadow);
     margin-bottom: 40px;
@@ -396,12 +374,12 @@ h2 {
 }
 
 .schedule-table th {
-    background-color: var(--even-section-background);
-    color: var(--primary-background);
+    background-color: var(--background-2nd);
+    color: var(--text_body);
 }
 
 .schedule-table td {
-    background-color: var(--table-row-background);
+    background-color: var(--background-3rd);
 }
 
 .schedule-table td:first-child {
