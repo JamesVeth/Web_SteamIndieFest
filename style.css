@@ -1,6 +1,6 @@
-:root {
+/* Section: Main Colours */
 
-    /* Changed Colours */
+:root {
 
     --active-accent: #03ff25;
     --inactive-accent: #5C6A72;
@@ -15,10 +15,13 @@
     --button-hover: #ffffff;
     --shadow: rgba(0, 0, 0, 0.5);
 
-
 }
 
-/* Global Reset */
+/* End Section: Main Colours */
+
+
+
+/* Section: Global */
 * {
     color: var(--text_body);
     margin: 0;
@@ -77,6 +80,46 @@ body {
     overflow-x: hidden;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* End Section: Global */
+
+
+
+/* Section: Buttons */
+
+.button-general-container{
+    margin: 20px;
+}
+.button-general {
+    font-family: 'MotivaSansBold', Arial, sans-serif;
+    cursor: pointer;
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--background-1st);
+    color: var(--text_body);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, colour 0.3s ease;
+    width: auto; /* Prevent buttons from stretching full-width */
+    padding: 10px 20px; 
+    font-size: 16px; 
+}
+
+.button-general:hover {
+    background-color: var(--active-accent);
+    color: var(--text_active);
+}
+
+
+/* End Section: Buttons */
+
+
+
+/* Section: Navbar */
+
 .navbar {
     position: fixed;
     top: 0;
@@ -93,32 +136,6 @@ body {
 
 .navbar:hover {
     background-color: var(--button-hover); 
-}
-
-html {
-    scroll-behavior: smooth;
-}
-.button-general-container{
-    margin: 20px;
-}
-.button-general {
-    font-family: 'MotivaSansBold', Arial, sans-serif;
-    cursor: pointer;
-    width: 100%;
-    padding: 15px 20px;
-    background-color: var(--background-1st);
-    color: var(--text_body);
-    border-radius: 50px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, colour 0.3s ease;
-    width: auto; /* Prevent buttons from stretching full-width */
-    padding: 10px 20px; /* Adjust padding for better size */
-    font-size: 16px; /* Adjust font size to fit better */
-}
-
-.button-general:hover {
-    background-color: var(--active-accent);
-    color: var(--text_active);
 }
 
 .navbar ul {
@@ -169,6 +186,13 @@ html {
     object-fit: contain;
 }
 
+/* End Section: Navbar */
+
+
+
+
+/* Section: Sections (General) */
+
 section {
     display: flex;
     flex-direction: column;
@@ -198,7 +222,13 @@ section:nth-child(even) {
     background-color: var(--even-section-background); /* Fallback colour */
     color: var(--text_body);
 }
-/* Register and Contact form styles */
+
+/* End Section: Sections (General) */
+
+
+
+/* Section: Register and Contact */
+
 #register form, #contact form {
     background-color: var(--background-1st);
     padding: 30px;
@@ -253,15 +283,18 @@ section:nth-child(even) {
     outline: none;
 }
 
-/* Schedule Section */
+
+/* End Section: Register and Contact */
+
+
+
+/* Section: Games*/
 
 h2 {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 40px;
 }
-
-
 
 .dot {
     display: inline-block;
@@ -291,10 +324,22 @@ h2 {
     overflow: hidden;
     gap: 20px;
   }
-  
+
+  .games-card.active {
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-start; 
+    gap: 10px; 
+
+}
+
+  .games-card.active img {
+    width: 40%;
+  }
+
   .games-card {
     display: none; /* Default is to hide all cards */
-    width: 80vw; /* Adjust the width as necessary */
+    width: 80vw; 
     padding: 20px;
     background-color: var(--background-1st);
     color: var(--text_body);
@@ -303,45 +348,27 @@ h2 {
     margin-bottom: 40px;
   }
 
-  .games-card.active {
-    display: flex; 
-    flex-direction: row; /* Items are displayed in a row */
-    align-items: flex-start; /* Align items to the top */
-    gap: 10px; /* Optional: space between the cards */
-
-}
-
-  .games-card.active img {
-    width: 40%;
-  }
-
-
   /* Changes  */
+
   .games-card {
-      display: flex; /* Keep the container as flex */
-      flex-direction: column; /* Stack the items vertically */
+      display: flex; 
+      flex-direction: column; 
     }
     
     .games-card-header {
-        display: block; /* Force header to be block-level so it starts on a new line */
-        margin-bottom: 10px; /* Optional: space between the header and the rest of the content */
+        display: block; 
+        /* Force header to be block-level so it starts on a new line */
+        margin-bottom: 10px; 
     }
     
     /* Changes  */
 
+
+/* End Section: Games*/
   
-  @media (max-width:600px) {
-    .games-card.active {
-        display: flex; /* Display the active card */
-        flex-direction:column;
-      }
-    .games-card.active img {
-        width: 90%;
-      }
-  }
 
 
-  
+/* Section: Schedule  */
 
 .schedule-nav {
     display: flex; /* Arrange buttons and dots in a row */
@@ -395,11 +422,45 @@ h3 {
     margin-bottom: 20px;
 }
 
-/* Consolidated Media Query (600px) */
+/* End Section: Schedule  */
+
+
+
+/* Media Queries */
+/* Media Query: Mobile (<600px) */
+
 @media (max-width: 600px) {
+
+    /* Section: Games */
+
+    .games-card.active {
+        display: flex;
+        flex-direction:column;
+    }
+    
+    .games-card.active img {
+        width: 90%;
+    }
+
+    .games-nav {
+        display: flex;
+        margin: 20px;
+        align-items: center; /* Centre-align the elements */
+        gap: 8px; /* Space between elements */
+    }
+
+    .dots-container {
+        display: flex;
+        justify-content: center; /* Center the dots horizontally */
+        gap: 5px; /* Space between dots */
+    }
+
+    /* Section: Navbar */
     .navbar ul li a {
         font-size: 1.5rem;
     }
+
+    /* Section: Register */
 
     #register form, #contact form {
         padding: 20px;
@@ -409,6 +470,8 @@ h3 {
     #register button, #contact button {
         font-size: 1.1rem;
     }
+
+    /* Section: Schedule */
 
     .schedule-table {
         display: block;
@@ -424,25 +487,12 @@ h3 {
     .schedule-nav {
         display: flex;
         margin: 40px;
-        align-items: center; /* Centre-align the elements */
-    }
-
-    .games-nav {
-        display: flex;
-        margin: 20px;
-        align-items: center; /* Centre-align the elements */
-        gap: 8px; /* Space between elements */
-    }
-
-    .dots-container {
-        display: flex;
-        justify-content: center; /* Centre the dots horizontally */
-        gap: 5px; /* Space between dots */
+        align-items: center; /* Center align the elements */
     }
 
 }
 
-/* Consolidated Media Query (600px) */
+/* Media Query: Desktop (>700px) */
 @media (min-width: 700px) {
   #register form, #contact form {
       width: 90vw;
