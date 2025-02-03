@@ -1,500 +1,499 @@
-/* Section: Main Colours */
-
-:root {
-
-    --active-accent: #03ff25;
-    --inactive-accent: #5C6A72;
-
-    --background-1st:#2B3B4A;
-    --background-2nd:#171D25;
-    --background-3rd:#3E4A58;
-    
-    --text_active: #000000;
-    --text_body: #ffffff;
-
-    --button-hover: #ffffff;
-    --shadow: rgba(0, 0, 0, 0.5);
-
-}
-
-/* End Section: Main Colours */
-
-
-
-/* Section: Global */
-* {
-    color: var(--text_body);
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-@font-face {
-    font-family: 'MonospaceRegular';
-    src: url('fonts/monospace/Monospace.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'MonospaceBold';
-    src: url('fonts/monospace/MonospaceBold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'MotivaSansRegular';
-    src: url('fonts/motiva-sans/MotivaSansRegular.woff.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'MotivaSansBold';
-    src: url('fonts/motiva-sans/MotivaSansBold.woff.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'FlinkNeueRegular';
-    src: url('fonts/flink-neue/FlinkNeueTest-Regular.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'FlinkNeueItalic';
-    src: url('fonts/flink-neue/FlinkNeueTest-LightIt.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'CodeSaver';
-    src: url('fonts/code_saver/CodeSaver-Regular.otf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-body {
-    font-family: 'FlinkNeueItalic', Arial, sans-serif;
-    background-color: var(--page-background); 
-    color: var(--primary-background);
-    scroll-behavior: smooth; 
-    overflow-x: hidden;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* End Section: Global */
-
-
-
-/* Section: Buttons */
-
-.button-general-container{
-    margin: 20px;
-}
-.button-general {
-    font-family: 'MotivaSansBold', Arial, sans-serif;
-    cursor: pointer;
-    width: 100%;
-    padding: 15px 20px;
-    background-color: var(--background-1st);
-    color: var(--text_body);
-    border-radius: 50px;
-    text-decoration: none;
-    transition: background-color 0.3s ease, colour 0.3s ease;
-    width: auto; /* Prevent buttons from stretching full-width */
-    padding: 10px 20px; 
-    font-size: 16px; 
-}
-
-.button-general:hover {
-    background-color: var(--active-accent);
-    color: var(--text_active);
-}
-
-
-/* End Section: Buttons */
-
-
-
-/* Section: Navbar */
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100px;
-    height: 100px;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: background-color 0.5s ease;
-}
-
-.navbar:hover {
-    background-color: var(--button-hover); 
-}
-
-.navbar ul {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100vh;
-    background-color: var(--background-2nd);
-    box-shadow: 4px 0 10px var(--shadow);
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    list-style: none;
-    transition: left 0.4s ease;
-    z-index: 100;
-}
-
-.navbar.active ul {
-    left: 0;
-}
-
-.navbar ul li {
-    margin: 10px 0;
-    text-align: center;
-}
-
-.navbar ul li a {
-    display: block;
-    width: 100%;
-    padding: 15px 20px;
-    background-color: var(--background-1st);
-    color: var(--text_body);
-    border-radius: 8px;
-    text-decoration: none;
-    font-size: 18px;
-    transition: background-color 0.3s ease, colour 0.3s ease;
-}
-
-.navbar ul li a:hover {
-    background-color: var(--active-accent);
-    color: var(--text_active);
-}
-
-.navbar img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-/* End Section: Navbar */
-
-
-
-
-/* Section: Sections (General) */
-
-section {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border-bottom: 1px solid var(--background-3rd);
-}
-
-section:nth-child(odd) {
-    background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(51, 255, 0, 0.20)), 
-                url('./images/Background.png');
-    background-size: cover; /* Ensure the image covers the entire section */
-    background-position: center; /* Centre the image */
-    background-repeat: no-repeat; /* Prevent repeating */
-    background-color: var(--odd-section-background); /* Fallback colour */
-    color: var(--primary-background); /* Foreground text colour */
-}
-
-section:nth-child(even) {
-    background: linear-gradient(rgba(51, 255, 0, 0.20), rgba(0, 0, 0, 0.60)), 
-                url('./images/Background.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-color: var(--even-section-background); /* Fallback colour */
-    color: var(--text_body);
-}
-
-/* End Section: Sections (General) */
-
-
-
-/* Section: Register and Contact */
-
-#register form, #contact form {
-    background-color: var(--background-1st);
-    padding: 30px;
-    border-radius: 8px;
-    max-width: 500px;
-    margin: 20px auto;
-    box-shadow: 0px 4px 6px var(--shadow);
-}
-
-#register label, #contact label {
-    font-family: 'MotivaSansRegular', Arial, sans-serif;
-    font-size: 1rem;
-    color: var(--text_body);
-    margin-bottom: 8px;
-    display: block;
-}
-
-#register input, #contact input, #contact textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid var(--inactive-accent);
-    background-color: var(--background-2nd);
-    color: var(--text_body);
-    font-size: 1rem;
-}
-
-#contact textarea {
-    resize: none;
-    height: 150px;
-}
-
-#register button, #contact button {
-    width: 100%;
-    padding: 12px;
-    background-color: var(--active-accent);
-    color: var(--text_active);
-    border: none;
-    border-radius: 8px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-#register button:hover, #contact button:hover {
-    background-color: var(--button-hover);
-}
-
-#register input:focus, #contact input:focus, #contact textarea:focus {
-    border-color: var(--inactive-accent);
-    outline: none;
-}
-
-
-/* End Section: Register and Contact */
-
-
-
-/* Section: Games*/
-
-h2 {
-    text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 40px;
-}
-
-.dot {
-    display: inline-block;
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-    border: var(--button-hover) solid 1.3px;
-    background-color: var(--inactive-accent);
-    margin: 0 5px;
-    cursor: pointer;
-}
-
-.dot.active {
-    background-color: var(--active-accent);
-}
-
-.games-nav {
-    display: flex; 
-    justify-content: center;
-    align-items: center; 
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  .games-container {
-    display: flex; 
-    overflow: hidden;
-    gap: 20px;
-  }
-
-  .games-card.active {
-    display: flex; 
-    flex-direction: row; 
-    align-items: flex-start; 
-    gap: 10px; 
-
-}
-
-  .games-card.active img {
-    width: 40%;
-  }
-
-  .games-card {
-    display: none; /* Default is to hide all cards */
-    width: 80vw; 
-    padding: 20px;
-    background-color: var(--background-1st);
-    color: var(--text_body);
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px var(--shadow);
-    margin-bottom: 40px;
-  }
-
-  /* Changes  */
-
-  .games-card {
-      display: flex; 
-      flex-direction: column; 
+/* #region Root Colours */
+
+    :root {
+
+        --active-accent: #03ff25;
+        --inactive-accent: #5C6A72;
+
+        --background-1st:#2B3B4A;
+        --background-2nd:#171D25;
+        --background-3rd:#3E4A58;
+        
+        --text_active: #000000;
+        --text_body: #ffffff;
+
+        --button-hover: #ffffff;
+        --shadow: rgba(0, 0, 0, 0.5);
+
+    }
+
+/* #endregion */
+
+/* #region Imported Fonts */
+    @font-face {
+        font-family: 'MonospaceRegular';
+        src: url('fonts/monospace/Monospace.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'MonospaceBold';
+        src: url('fonts/monospace/MonospaceBold.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'MotivaSansRegular';
+        src: url('fonts/motiva-sans/MotivaSansRegular.woff.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'MotivaSansBold';
+        src: url('fonts/motiva-sans/MotivaSansBold.woff.ttf') format('truetype');
+        font-weight: bold;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'FlinkNeueRegular';
+        src: url('fonts/flink-neue/FlinkNeueTest-Regular.otf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'FlinkNeueItalic';
+        src: url('fonts/flink-neue/FlinkNeueTest-LightIt.otf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+    @font-face {
+        font-family: 'CodeSaver';
+        src: url('fonts/code_saver/CodeSaver-Regular.otf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+/* #endregion */
+
+
+
+/* #region Global */
+    * {
+        color: var(--text_body);
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
     
-    .games-card-header {
-        display: block; 
-        /* Force header to be block-level so it starts on a new line */
-        margin-bottom: 10px; 
+    body {
+        font-family: 'FlinkNeueItalic', Arial, sans-serif;
+        background-color: var(--page-background); 
+        color: var(--primary-background);
+        scroll-behavior: smooth; 
+        overflow-x: hidden;
+    }
+
+    html {
+        scroll-behavior: smooth;
     }
     
-    /* Changes  */
+    h2 {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
 
+    h3 {
+        text-align: center;
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
 
-/* End Section: Games*/
-  
-
-
-/* Section: Schedule  */
-
-.schedule-nav {
-    display: flex; /* Arrange buttons and dots in a row */
-    margin: auto;
-    justify-content: center; /* Centre the content */
-    align-items: center; /* Vertically align items */
-    gap: 20px; /* Add spacing between buttons and the dots */
-    margin-top: 20px; /* Optional: Adjust spacing above/below the navigation */
-}
-
-.schedule-table {
-    display: none;
-    width: 80vw;
-    padding: 20px;
-    background-color: var(--background-1st);
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px var(--shadow);
-    margin-bottom: 40px;
-}
-
-.schedule-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.schedule-table th, .schedule-table td {
-    padding: 12px 15px;
-    text-align: left;
-}
-
-.schedule-table th {
-    background-color: var(--background-2nd);
-    color: var(--text_body);
-}
-
-.schedule-table td {
-    background-color: var(--background-3rd);
-}
-
-.schedule-table td:first-child {
-    width: 150px;
-}
-
-.schedule-table td:last-child {
-    text-transform: capitalize;
-}
-
-h3 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-/* End Section: Schedule  */
+/* #endregion */
 
 
 
-/* Media Queries */
-/* Media Query: Mobile (<600px) */
+/* #region Buttons */
 
-@media (max-width: 600px) {
+    .button-general-container{
+        margin: 20px;
+    }
 
-    /* Section: Games */
+    .button-general {
+        font-family: 'MotivaSansBold', Arial, sans-serif;
+        cursor: pointer;
+        width: 100%;
+        padding: 15px 20px;
+        background-color: var(--background-1st);
+        color: var(--text_body);
+        border-radius: 50px;
+        text-decoration: none;
+        transition: background-color 0.3s ease, colour 0.3s ease;
+        width: auto; /* Prevent buttons from stretching full-width */
+        padding: 10px 20px; 
+        font-size: 16px; 
+    }
 
-    .games-card.active {
+    .button-general:hover {
+        background-color: var(--active-accent);
+        color: var(--text_active);
+    }
+
+/* #endregion */
+
+
+
+/* #region Navbar */
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        z-index: 10;
         display: flex;
-        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        transition: background-color 0.5s ease;
     }
-    
-    .games-card.active img {
-        width: 90%;
+
+    .navbar:hover {
+        background-color: var(--button-hover); 
+    }
+
+    .navbar ul {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100vh;
+        background-color: var(--background-2nd);
+        box-shadow: 4px 0 10px var(--shadow);
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        list-style: none;
+        transition: left 0.4s ease;
+        z-index: 100;
+    }
+
+    .navbar.active ul {
+        left: 0;
+    }
+
+    .navbar ul li {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .navbar ul li a {
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+        background-color: var(--background-1st);
+        color: var(--text_body);
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 18px;
+        transition: background-color 0.3s ease, colour 0.3s ease;
+    }
+
+    .navbar ul li a:hover {
+        background-color: var(--active-accent);
+        color: var(--text_active);
+    }
+
+    .navbar img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }
+
+/* #endregion */
+
+
+
+
+/* #region Sections (General) */
+
+    section {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid var(--background-3rd);
+    }
+
+    section:nth-child(odd) {
+        background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(51, 255, 0, 0.20)), 
+                    url('./images/Background.png');
+        background-size: cover; /* Ensure the image covers the entire section */
+        background-position: center; /* Centre the image */
+        background-repeat: no-repeat; /* Prevent repeating */
+        background-color: var(--odd-section-background); /* Fallback colour */
+        color: var(--primary-background); /* Foreground text colour */
+    }
+
+    section:nth-child(even) {
+        background: linear-gradient(rgba(51, 255, 0, 0.20), rgba(0, 0, 0, 0.60)), 
+                    url('./images/Background.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: var(--even-section-background); /* Fallback colour */
+        color: var(--text_body);
+    }
+
+/* #endregion */
+
+
+
+/* #region Games*/
+
+    .dot {
+        display: inline-block;
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        border: var(--button-hover) solid 1.3px;
+        background-color: var(--inactive-accent);
+        margin: 0 5px;
+        cursor: pointer;
+    }
+
+    .dot.active {
+        background-color: var(--active-accent);
     }
 
     .games-nav {
-        display: flex;
-        margin: 20px;
-        align-items: center; /* Centre-align the elements */
-        gap: 8px; /* Space between elements */
+        display: flex; 
+        justify-content: center;
+        align-items: center; 
+        gap: 20px;
+        margin-top: 20px;
+    }
+    
+    .games-container {
+        display: flex; 
+        overflow: hidden;
+        gap: 20px;
     }
 
-    .dots-container {
-        display: flex;
-        justify-content: center; /* Center the dots horizontally */
-        gap: 5px; /* Space between dots */
+    .games-card.active {
+        display: flex; 
+        flex-direction: row; 
+        align-items: flex-start; 
+        gap: 10px; 
     }
 
-    /* Section: Navbar */
-    .navbar ul li a {
-        font-size: 1.5rem;
+    .games-card.active img {
+        width: 40%;
     }
 
-    /* Section: Register */
-
-    #register form, #contact form {
+    .games-card {
+        display: none; /* Default is to hide all cards */
+        width: 80vw; 
         padding: 20px;
-        width: 90%;
+        background-color: var(--background-1st);
+        color: var(--text_body);
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px var(--shadow);
+        margin-bottom: 40px;
     }
 
-    #register button, #contact button {
-        font-size: 1.1rem;
+    /* Changes  */
+
+    .games-card {
+        display: flex; 
+        flex-direction: column; 
+    }
+        
+    .games-card-header {
+        display: block; 
+        margin-bottom: 10px; 
     }
 
-    /* Section: Schedule */
+
+/* #endregion */
+  
+
+
+/* #region Schedule  */
+
+    .schedule-nav {
+        display: flex; /* Arrange buttons and dots in a row */
+        margin: auto;
+        justify-content: center; /* Centre the content */
+        align-items: center; /* Vertically align items */
+        gap: 20px; /* Add spacing between buttons and the dots */
+        margin-top: 20px; /* Optional: Adjust spacing above/below the navigation */
+    }
 
     .schedule-table {
+        display: none;
+        width: 80vw;
+        padding: 20px;
+        background-color: var(--background-1st);
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px var(--shadow);
+        margin-bottom: 40px;
+    }
+
+    .schedule-table table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .schedule-table th, .schedule-table td {
+        padding: 12px 15px;
+        text-align: left;
+    }
+
+    .schedule-table th {
+        background-color: var(--background-2nd);
+        color: var(--text_body);
+    }
+
+    .schedule-table td {
+        background-color: var(--background-3rd);
+    }
+
+    .schedule-table td:first-child {
+        width: 150px;
+    }
+
+    .schedule-table td:last-child {
+        text-transform: capitalize;
+    } 
+/* #endregion */
+
+
+
+/* #region Register and Contact */
+
+    #register form, #contact form {
+        background-color: var(--background-1st);
+        padding: 30px;
+        border-radius: 8px;
+        max-width: 500px;
+        margin: 20px auto;
+        box-shadow: 0px 4px 6px var(--shadow);
+    }
+
+    #register label, #contact label {
+        font-family: 'MotivaSansRegular', Arial, sans-serif;
+        font-size: 1rem;
+        color: var(--text_body);
+        margin-bottom: 8px;
         display: block;
     }
 
-    #day-1, #day-2, #day-3 {
-        display: inline-block;
-        width: auto;
-        margin: 0 5%;
-        overflow-x: scroll;
+    #register input, #contact input, #contact textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border-radius: 8px;
+        border: 1px solid var(--inactive-accent);
+        background-color: var(--background-2nd);
+        color: var(--text_body);
+        font-size: 1rem;
     }
 
-    .schedule-nav {
-        display: flex;
-        margin: 40px;
-        align-items: center; /* Center align the elements */
+    #contact textarea {
+        resize: none;
+        height: 150px;
     }
 
-}
+    #register button, #contact button {
+        width: 100%;
+        padding: 12px;
+        background-color: var(--active-accent);
+        color: var(--text_active);
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-/* Media Query: Desktop (>700px) */
-@media (min-width: 700px) {
-  #register form, #contact form {
-      width: 90vw;
-  }
-}
+    #register button:hover, #contact button:hover {
+        background-color: var(--button-hover);
+    }
+
+    #register input:focus, #contact input:focus, #contact textarea:focus {
+        border-color: var(--inactive-accent);
+        outline: none;
+    }
+
+/* #endregion */
+
+
+
+/* #region Media Query: Mobile (<600px) */
+
+    @media (max-width: 600px) {
+
+        /* Section: Games */
+
+            .games-card.active {
+                display: flex;
+                flex-direction:column;
+            }
+            
+            .games-card.active img {
+                width: 90%;
+            }
+
+            .games-nav {
+                display: flex;
+                margin: 20px;
+                align-items: center; /* Centre-align the elements */
+                gap: 8px; /* Space between elements */
+            }
+
+            .dots-container {
+                display: flex;
+                justify-content: center; /* Center the dots horizontally */
+                gap: 5px; /* Space between dots */
+            }
+
+        /* Section: Navbar */
+            .navbar ul li a {
+                font-size: 1.5rem;
+            }
+
+        /* Section: Register */
+
+            #register form, #contact form {
+                padding: 20px;
+                width: 90%;
+            }
+
+            #register button, #contact button {
+                font-size: 1.1rem;
+            }
+
+        /* Section: Schedule */
+
+            .schedule-table {
+                display: block;
+            }
+
+            #day-1, #day-2, #day-3 {
+                display: inline-block;
+                width: auto;
+                margin: 0 5%;
+                overflow-x: scroll;
+            }
+
+            .schedule-nav {
+                display: flex;
+                margin: 40px;
+                align-items: center; /* Center align the elements */
+            }
+
+    }
+/* #endregion */
+
+
+
+/* #region Media Query: Desktop (>700px) */
+    @media (min-width: 700px) {
+        #register form, #contact form {
+            width: 90vw;
+        }
+    }
+/* #endregion */
