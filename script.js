@@ -1,79 +1,110 @@
-const navbar = document.querySelector('.navbar');
-const scheduleNavDots = document.querySelectorAll('.schedule-nav .dot');
-const gameNavDots = document.querySelectorAll('.games-nav .dot');
-const scheduleTables = document.querySelectorAll('.schedule-table');
+const gamesContainer = document.querySelector('.games-container');
 const gamesCards = document.querySelectorAll('.games-card');
+const dots = document.querySelectorAll('.games-nav .dot');
+const prevButton = document.querySelector('.button-general.left');
+const nextButton = document.querySelector('.button-general.right');
 
-let currentDay = 0; // Tracks the current active schedule day
-let currentGame = 0; // Tracks the current active game card
 
-
-
-// Traditional mouse click, but this interferes with hover
+const navbar = document.querySelector('.navbar');
 
 navbar.addEventListener('click', () => {
     navbar.classList.toggle('active');
 });
 
 
-// navbar.addEventListener('touchstart', (event) => {
-//     // Check if the touch happened on the navbar itself, not a child element
-//     if (event.target === navbar) {
-//         event.preventDefault(); // Prevent accidental double interactions
-//         navbar.classList.toggle('active');
-//     }
-// });
+
+let currentIndex = 0;
+const cardsToShow = 3; // Number of cards to display at a time
+
+function updateActiveDot() {
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentIndex / cardsToShow].classList.add('active');
+  }
 
 
-// // Mouse hover, for desktop, instead of clicks
-// navbar.addEventListener('mouseover', () => {
-//     navbar.classList.add('active'); // Show navbar
-// });
 
-// navbar.addEventListener('mouseout', () => {
-//     navbar.classList.remove('active'); // Hide navbar
-// });
+function showCards(index) {
+  // Hide all cards
+  gamesCards.forEach(card => card.style.display = 'none');
 
-// Function to update schedule table display
-function updateSchedule(dayIndex) {
-    scheduleTables.forEach((table, index) => {
-        table.style.display = index === dayIndex ? 'block' : 'none';
-    });
-
-    scheduleNavDots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === dayIndex);
-    });
+  // Show the desired number of cards
+  for (let i = index; i < index + cardsToShow; i++) {
+    if (gamesCards[i]) { // Check if the card exists
+      gamesCards[i].style.display = 'flex';
+    }
+  }
+  // Update active dot
+  updateActiveDot();
 }
 
-// Initialise the first schedule day as active
-updateSchedule(currentDay);
+function scrollCarousel(direction) {
+  currentIndex += direction * cardsToShow;
+  // Ensure currentIndex stays within bounds
+  if (currentIndex < 0) {
+    currentIndex = 0;
+  } else if (currentIndex > gamesCards.length - cardsToShow) {
+    currentIndex = gamesCards.length - cardsToShow;
+  }
+  showCards(currentIndex);
+}
 
-// Add click events to navigation dots for schedule
-scheduleNavDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentDay = index;
-        updateSchedule(currentDay);
-    });
+
+
+// Initial display
+showCards(currentIndex);
+
+// Event listeners for buttons
+prevButton.addEventListener('click', () => scrollCarousel(-1));
+nextButton.addEventListener('click', () => scrollCarousel(1));
+
+// Event listeners for dots
+dots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentIndex = index * cardsToShow;
+    showCards(currentIndex);
+  });
 });
 
-// Function to update games card display
-function updateGamesCard(gameIndex) {
-    gamesCards.forEach((card, index) => {
-        card.classList.toggle('active', index === gameIndex); // Show only the selected game card
-    });
 
-    gameNavDots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === gameIndex); // Update active dot
-    });
+// JavaScript for Schedule Section (Modified)
+const scheduleTables = document.querySelectorAll('.schedule-table');
+const scheduleDots = document.querySelectorAll('.schedule-nav .dot');
+const prevScheduleButton = document.getElementById('prev-schedule-button');
+const nextScheduleButton = document.getElementById('next-schedule-button');
+
+let currentScheduleIndex = 0;
+
+function showScheduleTable(index) {
+  scheduleTables.forEach(table => table.style.display = 'none');
+  scheduleTables[index].style.display = 'block';
+
+  // Update active dot
+  updateActiveScheduleDot();
 }
 
-// Initialise the first game card as active
-updateGamesCard(currentGame);
+function updateActiveScheduleDot() {
+  scheduleDots.forEach(dot => dot.classList.remove('active'));
+  scheduleDots[currentScheduleIndex].classList.add('active');
+}
 
-// Add click events to navigation dots for games
-gameNavDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentGame = index;
-        updateGamesCard(currentGame);
-    });
+// Initial display
+showScheduleTable(currentScheduleIndex);
+
+// Event listeners for buttons
+prevScheduleButton.addEventListener('click', () => {
+  currentScheduleIndex = (currentScheduleIndex - 1 + scheduleTables.length) % scheduleTables.length;
+  showScheduleTable(currentScheduleIndex);
+});
+
+nextScheduleButton.addEventListener('click', () => {
+  currentScheduleIndex = (currentScheduleIndex + 1) % scheduleTables.length;
+  showScheduleTable(currentScheduleIndex);
+});
+
+// Event listeners for dots
+scheduleDots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentScheduleIndex = index;
+    showScheduleTable(currentScheduleIndex);
+  });
 });

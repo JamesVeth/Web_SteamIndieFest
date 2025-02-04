@@ -75,7 +75,7 @@
     }
     
     body {
-        font-family: 'FlinkNeueItalic', Arial, sans-serif;
+        font-family: 'MotivaSansRegular', Arial, sans-serif;
         background-color: var(--page-background); 
         color: var(--primary-background);
         scroll-behavior: smooth; 
@@ -146,6 +146,7 @@
         align-items: center;
         cursor: pointer;
         transition: background-color 0.5s ease;
+        font-family: 'FlinkNeueItalic', Arial, sans-serif;
     }
 
     .navbar:hover {
@@ -307,6 +308,8 @@
     }
 
 
+
+
 /* #endregion */
   
 
@@ -407,6 +410,8 @@
         font-size: 1.2rem;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        font-family: 'MotivaSansBold', Arial, sans-serif;
+
     }
 
     #register button:hover, #contact button:hover {
