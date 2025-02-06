@@ -108,11 +108,7 @@
 <div class="carousel-container">
     <div class="carousel">
         <!-- 10 cards -->
-        <div class="card">
-            <h3>Card 1</h3>
-            <img src="https://via.placeholder.com/600x300" alt="1">
-            <p>Lorem ipsum dolor.</p>
-        </div>
+        <div class="card"><h3>Card 1</h3><img src="https://via.placeholder.com/600x300" alt="1"><p>Lorem ipsum dolor.</p></div>
         <div class="card"><h3>Card 2</h3><img src="https://via.placeholder.com/600x300" alt="2"><p>Lorem ipsum dolor.</p></div>
         <div class="card"><h3>Card 3</h3><img src="https://via.placeholder.com/600x300" alt="3"><p>Lorem ipsum dolor.</p></div>
         <div class="card"><h3>Card 4</h3><img src="https://via.placeholder.com/600x300" alt="4"><p>Lorem ipsum dolor.</p></div>
@@ -176,19 +172,14 @@
         });
     }
 
-    // Fixed Mouse Wheel Scroll
+    // Mouse Wheel Scrolling (Slower)
     carousel.addEventListener("wheel", (e) => {
         e.preventDefault();
-        const cardWidth = carousel.offsetWidth / 3;
-        index += e.deltaY > 0 ? 1 : -1; // Scroll right if wheel down, left if up
-        if (index < 0) index = cards.length - 1;
-        if (index >= cards.length) index = 0;
-
-        carousel.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
-        updateDots();
+        const scrollAmount = carousel.offsetWidth / 6; // Reduce scroll speed
+        carousel.scrollBy({ left: e.deltaY > 0 ? scrollAmount : -scrollAmount, behavior: 'smooth' });
     });
 
-    // Touch swipe support
+    // Touch swipe support with snap-to-center
     carousel.addEventListener("touchstart", (e) => {
         isDragging = true;
         startX = e.touches[0].pageX - carousel.offsetLeft;
@@ -198,14 +189,22 @@
     carousel.addEventListener("touchmove", (e) => {
         if (!isDragging) return;
         const x = e.touches[0].pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2;
+        const walk = (x - startX) * 1.5;
         carousel.scrollLeft = scrollLeft - walk;
     });
 
     carousel.addEventListener("touchend", () => {
         isDragging = false;
+        snapToClosestCard();
     });
 
+    function snapToClosestCard() {
+        const cardWidth = carousel.offsetWidth / 3;
+        const nearestIndex = Math.round(carousel.scrollLeft / cardWidth);
+        index = (nearestIndex + cards.length) % cards.length;
+        carousel.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
+        updateDots();
+    }
 </script>
 
 </body>
