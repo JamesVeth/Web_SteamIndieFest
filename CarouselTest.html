@@ -152,18 +152,22 @@
         const dotsContainer = document.getElementById("dotsContainer");
         const prevBtn = document.getElementById("prev");
         const nextBtn = document.getElementById("next");
-
+    
         let games = [...document.querySelectorAll(".games-card")];
         let gameWidth = games[0].offsetWidth + 16; // Include the gap
         let index = 0;
         let isTransitioning = false;
-
+    
+        let startX = 0;
+        let moveX = 0;
+        let threshold = 50; // Minimum swipe distance
+    
         // Centre the first game
         function centreScroll() {
             let offset = (window.innerWidth / 2) - (gameWidth / 2);
             gameContainer.style.transform = `translateX(${offset - (index * gameWidth)}px)`;
         }
-
+    
         // Create dots dynamically
         function createDots() {
             dotsContainer.innerHTML = "";
@@ -174,39 +178,39 @@
             }
             updateDots();
         }
-
+    
         // Update dots and active card
         function updateDots() {
             let dots = document.querySelectorAll(".dot");
-
+    
             dots.forEach(dot => dot.classList.remove("active"));
             dots[index]?.classList.add("active");
-
+    
             // Highlight the active game card
             games.forEach(game => game.classList.remove("active-card"));
             games[index]?.classList.add("active-card");
         }
-
+    
         // Move function
         function move(direction) {
             if (isTransitioning) return;
             isTransitioning = true;
-
+    
             if (direction === "next") {
                 index = (index + 1) % games.length;
             } else {
                 index = (index - 1 + games.length) % games.length;
             }
-
+    
             gameContainer.style.transition = "transform 0.4s ease-in-out";
             centreScroll();
-
+    
             setTimeout(() => {
                 updateDots();
                 isTransitioning = false;
             }, 400);
         }
-
+    
         // Mouse wheel scroll (smooth horizontal movement)
         let scrollTimeout;
         document.addEventListener("wheel", (e) => {
@@ -215,14 +219,31 @@
                 move(e.deltaY > 0 ? "next" : "prev");
             }, 100);
         });
-
+    
+        // Touch support (for mobile devices)
+        gameContainer.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+        });
+    
+        gameContainer.addEventListener("touchmove", (e) => {
+            moveX = e.touches[0].clientX - startX;
+        });
+    
+        gameContainer.addEventListener("touchend", () => {
+            if (Math.abs(moveX) > threshold) {
+                move(moveX < 0 ? "next" : "prev");
+            }
+        });
+    
         // Button event listeners
         nextBtn.addEventListener("click", () => move("next"));
         prevBtn.addEventListener("click", () => move("prev"));
-
+    
         // Initialise
         createDots();
         centreScroll();
     </script>
+    
+    
 </body>
 </html>
