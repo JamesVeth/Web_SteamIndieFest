@@ -221,7 +221,6 @@
     section:nth-child(odd) {
         background: linear-gradient(rgba(0, 0, 0, 0.60), rgba(51, 255, 0, 0.20)), 
                     url('./images/Background.png');
-        background-size: cover; /* Ensure the image covers the entire section */
         background-position: center; /* Centre the image */
         background-repeat: no-repeat; /* Prevent repeating */
         background-color: var(--odd-section-background); /* Fallback colour */
@@ -231,7 +230,6 @@
     section:nth-child(even) {
         background: linear-gradient(rgba(51, 255, 0, 0.20), rgba(0, 0, 0, 0.60)), 
                     url('./images/Background.png');
-        background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         background-color: var(--even-section-background); /* Fallback colour */
