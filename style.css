@@ -244,6 +244,13 @@
 
 /* #region Games*/
 
+    #scrollContainer {
+        overflow: hidden;
+        width: 80vw;
+        position: relative;
+        padding: 1rem 0;
+    }
+
     .dot {
         display: inline-block;
         height: 12px;
@@ -268,7 +275,7 @@
     }
     
     #games-container {
-        display: flex; 
+        display: flex;
         flex-direction: row;
         gap: 1rem;
         width: max-content;
@@ -280,18 +287,25 @@
         box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
     }
 
-    .games-card.active img {
-        width: 40%;
+    .games-card h3,
+    .games-card img,
+    .games-card p {
+        margin-bottom: 10px; /* Adjust spacing */
     }
 
+
     .games-card {
-        width: 80vw; 
-        padding: 1rem;
-        background-color: var(--background-1st);
+        width: 200px;
+        padding: 0.2rem;
+        background-color:var(--background-1st);
         color: var(--text_body);
-        border-radius: 8px;
+        text-align: center;
+        padding: 1rem;
+        border: 1px solid var(--inactive-accent);
+        border-radius: 1rem;
+        flex-shrink: 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
         box-shadow: 0px 4px 10px var(--shadow);
-        margin-bottom: 40px;
     }
 
     .games-card img{
@@ -303,15 +317,6 @@
         box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
     }
 
-
-    /* Changes  */
-
-
-        
-    .games-card-header {
-        display: block; 
-        margin-bottom: 10px; 
-    }
 
 
 
@@ -334,8 +339,10 @@
     .schedule-table {
         display: none;
         width: 80vw;
+        height: 50vh;
         padding: 20px;
         background-color: var(--background-1st);
+        border: 1px solid var(--inactive-accent);
         border-radius: 8px;
         box-shadow: 0px 4px 10px var(--shadow);
         margin-bottom: 40px;
@@ -344,6 +351,9 @@
     .schedule-table table {
         width: 100%;
         border-collapse: collapse;
+        border: 1px solid var(--inactive-accent);
+        box-shadow: 0px 1px 2px var(--shadow);
+
     }
 
     .schedule-table th, .schedule-table td {
@@ -377,6 +387,7 @@
         background-color: var(--background-1st);
         padding: 30px;
         border-radius: 8px;
+        border: 1px solid var(--inactive-accent);
         max-width: 500px;
         margin: 20px auto;
         box-shadow: 0px 4px 6px var(--shadow);

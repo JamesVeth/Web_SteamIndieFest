@@ -1,3 +1,53 @@
+// JavaScript for Schedule Section
+
+const scheduleTables = document.querySelectorAll('.schedule-table');
+const scheduleDots = document.querySelectorAll('.schedule-nav .dot');
+const prevScheduleButton = document.getElementById('prev-schedule-button');
+const nextScheduleButton = document.getElementById('next-schedule-button');
+
+let currentScheduleIndex = 0;
+
+function showScheduleTable(index) {
+  scheduleTables.forEach(table => table.style.display = 'none');
+  scheduleTables[index].style.display = 'block';
+
+  // Update active dot
+  updateActiveScheduleDot();
+}
+
+function updateActiveScheduleDot() {
+  scheduleDots.forEach(dot => dot.classList.remove('active'));
+  scheduleDots[currentScheduleIndex].classList.add('active');
+}
+
+// Initial display
+showScheduleTable(currentScheduleIndex);
+
+// Event listeners for buttons
+prevScheduleButton.addEventListener('click', () => {
+  currentScheduleIndex = (currentScheduleIndex - 1 + scheduleTables.length) % scheduleTables.length;
+  showScheduleTable(currentScheduleIndex);
+});
+
+nextScheduleButton.addEventListener('click', () => {
+  currentScheduleIndex = (currentScheduleIndex + 1) % scheduleTables.length;
+  showScheduleTable(currentScheduleIndex);
+});
+
+// Event listeners for dots
+scheduleDots.forEach((dot, index) => {
+  dot.addEventListener('click', () => {
+    currentScheduleIndex = index;
+    showScheduleTable(currentScheduleIndex);
+  });
+});
+
+
+
+
+// JavaScript for Games Section
+
+
 const gamesContainer = document.querySelector('.games-container');
 const gamesCards = document.querySelectorAll('.games-card');
 const dots = document.querySelectorAll('.games-nav .dot');
@@ -66,45 +116,5 @@ dots.forEach((dot, index) => {
 });
 
 
-// JavaScript for Schedule Section (Modified)
-const scheduleTables = document.querySelectorAll('.schedule-table');
-const scheduleDots = document.querySelectorAll('.schedule-nav .dot');
-const prevScheduleButton = document.getElementById('prev-schedule-button');
-const nextScheduleButton = document.getElementById('next-schedule-button');
 
-let currentScheduleIndex = 0;
 
-function showScheduleTable(index) {
-  scheduleTables.forEach(table => table.style.display = 'none');
-  scheduleTables[index].style.display = 'block';
-
-  // Update active dot
-  updateActiveScheduleDot();
-}
-
-function updateActiveScheduleDot() {
-  scheduleDots.forEach(dot => dot.classList.remove('active'));
-  scheduleDots[currentScheduleIndex].classList.add('active');
-}
-
-// Initial display
-showScheduleTable(currentScheduleIndex);
-
-// Event listeners for buttons
-prevScheduleButton.addEventListener('click', () => {
-  currentScheduleIndex = (currentScheduleIndex - 1 + scheduleTables.length) % scheduleTables.length;
-  showScheduleTable(currentScheduleIndex);
-});
-
-nextScheduleButton.addEventListener('click', () => {
-  currentScheduleIndex = (currentScheduleIndex + 1) % scheduleTables.length;
-  showScheduleTable(currentScheduleIndex);
-});
-
-// Event listeners for dots
-scheduleDots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-    currentScheduleIndex = index;
-    showScheduleTable(currentScheduleIndex);
-  });
-});
