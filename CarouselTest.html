@@ -73,26 +73,29 @@
 
         #buttons {
             display: flex;
+            flex-direction: row;
+            justify-content: center;
             gap: 1rem;
         }
         .button-general {
             padding: 0.5rem 1rem;
             font-size: 1rem;
             border: 1px solid var(--inactive-accent);
-            background-color: var(--background-1st);
-            color: var(--text_body);
+            background-color: darkslategrey;
+            color: white;
             cursor: pointer;
             border-radius: 8px;
             transition: background-color 0.3s ease;
         }
         .button-general:hover {
-            background-color: var(--active-accent);
-            color: var(--text_active);
+            background-color: limegreen;
+            color: black;
         }
         .active-card {
             transform: scale(1.1);
             box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
         }
+
     </style>
 </head>
 <body>
