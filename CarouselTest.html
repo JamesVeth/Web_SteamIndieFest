@@ -3,209 +3,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Infinite Scrolling Carousel</title>
+    <title>Infinite Scroll Games</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Ensure your CSS file is linked -->
     <style>
         * {
+            font-family: 'FlinkNeueItalic', Arial, sans-serif;
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
-
         body {
-            font-family: Arial, sans-serif;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
             height: 100vh;
-            background-color: #f4f4f4;
-            overflow-x: hidden;
+            background-color: var(--background-2nd);
         }
-
-        .carousel-container {
-            position: relative;
-            width: 80%;
-            max-width: 900px;
+        #scrollContainer {
             overflow: hidden;
-            text-align: center;
+            width: 80vw;
+            position: relative;
         }
-
-        .carousel {
+        #gameContainer {
             display: flex;
-            scroll-behavior: smooth;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scrollbar-width: none; /* Hide scrollbar */
-            -ms-overflow-style: none;
+            flex-direction: row;
+            gap: 1rem;
+            width: max-content;
+            transition: transform 0.4s ease-in-out;
+            padding: 1rem 0;
         }
-
-        .carousel::-webkit-scrollbar {
-            display: none;
-        }
-
-        .card {
-            min-width: 33.33%;
-            flex: 0 0 33.33%;
-            box-sizing: border-box;
-            text-align: center;
-            padding: 10px;
-            border: 3px solid black;
-            border-radius: 10px;
-            background-color: white;
-            margin: 5px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-            scroll-snap-align: center;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-
-        .dots {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        .dot {
-            height: 10px;
-            width: 10px;
-            margin: 0 5px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            cursor: pointer;
-        }
-
-        .dot.active {
-            background-color: limegreen;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-
-        button {
-            background-color: rgba(0, 0, 0, 0.5);
+        .games-card {
+            width: 200px;
+            padding: 0.2rem;
+            background-color:darkslategrey;
             color: white;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            margin: 0 10px;
-            border-radius: 5px;
+            text-align: center;
+            border: 1px solid var(--inactive-accent);
+            border-radius: 1rem;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0px 4px 10px var(--shadow);
         }
 
-        button:hover {
-            background-color: black;
+        .games-card img{
+            width: 90%;
+        }
+
+        #dotsContainer {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+            gap: 0.5rem;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--inactive-accent);
+            border: var(--button-hover) solid 1.3px;
+            cursor: pointer;
+        }
+        .dot.active {
+            background-color: var(--active-accent);
+        }
+        #buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        .button-general {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: 1px solid var(--inactive-accent);
+            background-color: var(--background-1st);
+            color: var(--text_body);
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        .button-general:hover {
+            background-color: var(--active-accent);
+            color: var(--text_active);
+        }
+        .active-card {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
         }
     </style>
 </head>
 <body>
+    <div id="scrollContainer">
+        <div id="gameContainer">
 
-<div class="carousel-container">
-    <div class="carousel">
-        <!-- 10 cards -->
-        <div class="card"><h3>Card 1</h3><img src="https://via.placeholder.com/600x300" alt="1"><p>Lorem ipsum dolor.</p></div>
-        <div class="card"><h3>Card 2</h3><img src="https://via.placeholder.com/600x300" alt="2"><p>Lorem ipsum dolor.</p></div>
-        <div class="card"><h3>Card 3</h3><img src="https://via.placeholder.com/600x300" alt="3"><p>Lorem ipsum dolor.</p></div>
-        <div class="card"><h3>Card 4</h3><img src="https://via.placeholder.com/600x300" alt="4"><p>Lorem ipsum dolor.</p></div>
-        <div class="card"><h3>Card 5</h3><img src="https://via.placeholder.com/600x300" alt="5"><p>Lorem ipsum dolor.</p></div>
-        <div class="card"><h3>Card 6</h3><img src="https://via.placeholder.com/600x300" alt="6"><p>Lorem ipsum dolor.</p></div>
-        <div class="card"><h3>Card 7</h3><img src="https://via.placeholder.com/600x300" alt="7"><p>Lorem ipsum dolor.</p></div>
-        <div class="card"><h3>Card 8</h3><img src="https://via.placeholder.com/600x300" alt="8"><p>Lorem ipsum dolor.</p></div>
-        <div class="card"><h3>Card 9</h3><img src="https://via.placeholder.com/600x300" alt="9"><p>Lorem ipsum dolor.</p></div>
-        <div class="card"><h3>Card 10</h3><img src="https://via.placeholder.com/600x300" alt="10"><p>Lorem ipsum dolor.</p></div>
+            <div class="games-card">
+                <h3>Game 2</h3>
+                <img src="images/games/Game02.jpg">
+                <p>Description 2</p>
+            </div>
+            
+            <div class="games-card">
+                <h3>Game 1</h3>
+                <img src="images/games/Game01.jpg">
+                <p>Description 1</p>
+            </div>
+            
+            <div class="games-card">
+                <h3>Game 3</h3>
+                <img src="images/games/Game03.jpg">
+                <p>Description 3</p>
+            </div>
+            
+            <div class="games-card">
+                <h3>Game 4</h3>
+                <img src="images/games/Game04.jpg">
+                <p>Description 4</p>
+            </div>
+            
+            <div class="games-card">
+                <h3>Game 5</h3>
+                <img src="images/games/Game05.jpg">
+                <p>Description 5</p>
+            </div>
+            
+            <div class="games-card">
+                <h3>Game 6</h3>
+                <img src="images/games/Game06.jpg">
+                <p>Description 6</p>
+            </div>
+            
+            <div class="games-card">
+                <h3>Game 7</h3>
+                <img src="images/games/Game07.jpg">
+                <p>Description 7</p>
+            </div>
+        </di
+        v>
     </div>
 
-    <div class="dots"></div>
+    <div id="dotsContainer"></div>
 
-    <div class="controls">
-        <button class="prev" onclick="scrollCarousel(-1)">&#10094;</button>
-        <button class="next" onclick="scrollCarousel(1)">&#10095;</button>
+    <div id="buttons">
+        <button id="prev" class="button-general">Prev</button>
+        <button id="next" class="button-general">Next</button>
     </div>
-</div>
 
-<script>
-    const carousel = document.querySelector('.carousel');
-    const cards = document.querySelectorAll('.card');
-    const dotsContainer = document.querySelector('.dots');
+    <script>
+        const gameContainer = document.getElementById("gameContainer");
+        const dotsContainer = document.getElementById("dotsContainer");
+        const prevBtn = document.getElementById("prev");
+        const nextBtn = document.getElementById("next");
 
-    let index = 0;
-    let isDragging = false;
-    let startX;
-    let scrollLeft;
+        let games = [...document.querySelectorAll(".games-card")];
+        let gameWidth = games[0].offsetWidth + 16; // Include the gap
+        let index = 0;
+        let isTransitioning = false;
 
-    // Create dots dynamically
-    cards.forEach((_, i) => {
-        const dot = document.createElement('span');
-        dot.classList.add('dot');
-        if (i === 0) dot.classList.add('active');
-        dot.addEventListener('click', () => setCarousel(i));
-        dotsContainer.appendChild(dot);
-    });
+        // Centre the first game
+        function centreScroll() {
+            let offset = (window.innerWidth / 2) - (gameWidth / 2);
+            gameContainer.style.transform = `translateX(${offset - (index * gameWidth)}px)`;
+        }
 
-    const dots = document.querySelectorAll('.dot');
+        // Create dots dynamically
+        function createDots() {
+            dotsContainer.innerHTML = "";
+            for (let i = 0; i < games.length; i++) {
+                let dot = document.createElement("div");
+                dot.classList.add("dot");
+                dotsContainer.appendChild(dot);
+            }
+            updateDots();
+        }
 
-    function scrollCarousel(direction) {
-        const cardWidth = carousel.offsetWidth / 3;
-        index += direction;
-        if (index < 0) index = cards.length - 1;
-        if (index >= cards.length) index = 0;
+        // Update dots and active card
+        function updateDots() {
+            let dots = document.querySelectorAll(".dot");
 
-        carousel.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
-        updateDots();
-    }
+            dots.forEach(dot => dot.classList.remove("active"));
+            dots[index]?.classList.add("active");
 
-    function setCarousel(i) {
-        index = i;
-        const cardWidth = carousel.offsetWidth / 3;
-        carousel.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
-        updateDots();
-    }
+            // Highlight the active game card
+            games.forEach(game => game.classList.remove("active-card"));
+            games[index]?.classList.add("active-card");
+        }
 
-    function updateDots() {
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('active', i === index);
+        // Move function
+        function move(direction) {
+            if (isTransitioning) return;
+            isTransitioning = true;
+
+            if (direction === "next") {
+                index = (index + 1) % games.length;
+            } else {
+                index = (index - 1 + games.length) % games.length;
+            }
+
+            gameContainer.style.transition = "transform 0.4s ease-in-out";
+            centreScroll();
+
+            setTimeout(() => {
+                updateDots();
+                isTransitioning = false;
+            }, 400);
+        }
+
+        // Mouse wheel scroll (smooth horizontal movement)
+        let scrollTimeout;
+        document.addEventListener("wheel", (e) => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                move(e.deltaY > 0 ? "next" : "prev");
+            }, 100);
         });
-    }
 
-    // Mouse Wheel Scrolling (Slower)
-    carousel.addEventListener("wheel", (e) => {
-        e.preventDefault();
-        const scrollAmount = carousel.offsetWidth / 6; // Reduce scroll speed
-        carousel.scrollBy({ left: e.deltaY > 0 ? scrollAmount : -scrollAmount, behavior: 'smooth' });
-    });
+        // Button event listeners
+        nextBtn.addEventListener("click", () => move("next"));
+        prevBtn.addEventListener("click", () => move("prev"));
 
-    // Touch swipe support with snap-to-center
-    carousel.addEventListener("touchstart", (e) => {
-        isDragging = true;
-        startX = e.touches[0].pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-    });
-
-    carousel.addEventListener("touchmove", (e) => {
-        if (!isDragging) return;
-        const x = e.touches[0].pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        carousel.scrollLeft = scrollLeft - walk;
-    });
-
-    carousel.addEventListener("touchend", () => {
-        isDragging = false;
-        snapToClosestCard();
-    });
-
-    function snapToClosestCard() {
-        const cardWidth = carousel.offsetWidth / 3;
-        const nearestIndex = Math.round(carousel.scrollLeft / cardWidth);
-        index = (nearestIndex + cards.length) % cards.length;
-        carousel.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
-        updateDots();
-    }
-</script>
-
+        // Initialise
+        createDots();
+        centreScroll();
+    </script>
 </body>
 </html>
