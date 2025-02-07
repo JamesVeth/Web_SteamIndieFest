@@ -169,11 +169,18 @@
         // Centre the first game
         function centreScroll() {
             let viewportWidth = window.innerWidth;
-            let offset = (viewportWidth / 2) - (gameWidth / 2); // Centre active card
-            let translateX = offset - (index * gameWidth);
+            let activeCard = games[index]; // Get the current active card
+
+
+            let activeCardWidth = activeCard.offsetWidth + (window.innerWidth * 0.2);
+
             
+            let offset = (viewportWidth / 2) - (activeCardWidth / 2); // Perfect centre
+            let translateX = offset - (index * gameWidth);
+
             gameContainer.style.transform = `translateX(${translateX}px)`;
         }
+
 
     
         // Create dots dynamically
