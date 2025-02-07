@@ -267,17 +267,17 @@
         margin-top: 20px;
     }
     
-    .games-container {
+    #games-container {
         display: flex; 
-        overflow: hidden;
-        gap: 20px;
+        flex-direction: row;
+        gap: 1rem;
+        width: max-content;
+        transition: transform 0.4s ease-in-out;
+        padding: 1rem 0;
     }
 
     .games-card.active {
-        display: flex; 
-        flex-direction: row; 
-        align-items: flex-start; 
-        gap: 10px; 
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
     }
 
     .games-card.active img {
@@ -285,9 +285,8 @@
     }
 
     .games-card {
-        display: none; /* Default is to hide all cards */
         width: 80vw; 
-        padding: 20px;
+        padding: 1rem;
         background-color: var(--background-1st);
         color: var(--text_body);
         border-radius: 8px;
@@ -295,12 +294,19 @@
         margin-bottom: 40px;
     }
 
+    .games-card img{
+        width: 90%;
+    }
+    
+    .active-card {
+        transform: scale(1.1);
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
+    }
+
+
     /* Changes  */
 
-    .games-card {
-        display: flex; 
-        flex-direction: column; 
-    }
+
         
     .games-card-header {
         display: block; 
