@@ -1,120 +1,171 @@
-// JavaScript for Schedule Section
+// #region Navbar
 
-const scheduleTables = document.querySelectorAll('.schedule-table');
-const scheduleDots = document.querySelectorAll('.schedule-nav .dot');
-const prevScheduleButton = document.getElementById('prev-schedule-button');
-const nextScheduleButton = document.getElementById('next-schedule-button');
+    const navbar = document.querySelector('.navbar');
 
-let currentScheduleIndex = 0;
-
-function showScheduleTable(index) {
-  scheduleTables.forEach(table => table.style.display = 'none');
-  scheduleTables[index].style.display = 'block';
-
-  // Update active dot
-  updateActiveScheduleDot();
-}
-
-function updateActiveScheduleDot() {
-  scheduleDots.forEach(dot => dot.classList.remove('active'));
-  scheduleDots[currentScheduleIndex].classList.add('active');
-}
-
-// Initial display
-showScheduleTable(currentScheduleIndex);
-
-// Event listeners for buttons
-prevScheduleButton.addEventListener('click', () => {
-  currentScheduleIndex = (currentScheduleIndex - 1 + scheduleTables.length) % scheduleTables.length;
-  showScheduleTable(currentScheduleIndex);
-});
-
-nextScheduleButton.addEventListener('click', () => {
-  currentScheduleIndex = (currentScheduleIndex + 1) % scheduleTables.length;
-  showScheduleTable(currentScheduleIndex);
-});
-
-// Event listeners for dots
-scheduleDots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-    currentScheduleIndex = index;
-    showScheduleTable(currentScheduleIndex);
-  });
-});
+    navbar.addEventListener('click', () => {
+        navbar.classList.toggle('active');
+    });
 
 
+// #endregion
 
 
-// JavaScript for Games Section
+// #region Schedule
 
+    const scheduleTables = document.querySelectorAll('.schedule-table');
+    const scheduleDots = document.querySelectorAll('.schedule-nav .dot');
+    const prevScheduleButton = document.getElementById('prev-schedule-button');
+    const nextScheduleButton = document.getElementById('next-schedule-button');
 
-const gamesContainer = document.querySelector('.games-container');
-const gamesCards = document.querySelectorAll('.games-card');
-const dots = document.querySelectorAll('.games-nav .dot');
-const prevButton = document.querySelector('.button-general.left');
-const nextButton = document.querySelector('.button-general.right');
+    let currentScheduleIndex = 0;
 
+    function showScheduleTable(index) {
+    scheduleTables.forEach(table => table.style.display = 'none');
+    scheduleTables[index].style.display = 'block';
 
-const navbar = document.querySelector('.navbar');
-
-navbar.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-});
-
-
-
-let currentIndex = 0;
-const cardsToShow = 3; // Number of cards to display at a time
-
-function updateActiveDot() {
-    dots.forEach(dot => dot.classList.remove('active'));
-    dots[currentIndex / cardsToShow].classList.add('active');
-  }
-
-
-
-function showCards(index) {
-  // Hide all cards
-  gamesCards.forEach(card => card.style.display = 'none');
-
-  // Show the desired number of cards
-  for (let i = index; i < index + cardsToShow; i++) {
-    if (gamesCards[i]) { // Check if the card exists
-      gamesCards[i].style.display = 'flex';
+    // Update active dot
+    updateActiveScheduleDot();
     }
-  }
-  // Update active dot
-  updateActiveDot();
-}
 
-function scrollCarousel(direction) {
-  currentIndex += direction * cardsToShow;
-  // Ensure currentIndex stays within bounds
-  if (currentIndex < 0) {
-    currentIndex = 0;
-  } else if (currentIndex > gamesCards.length - cardsToShow) {
-    currentIndex = gamesCards.length - cardsToShow;
-  }
-  showCards(currentIndex);
-}
+    function updateActiveScheduleDot() {
+    scheduleDots.forEach(dot => dot.classList.remove('active'));
+    scheduleDots[currentScheduleIndex].classList.add('active');
+    }
 
+    // Initial display
+    showScheduleTable(currentScheduleIndex);
 
+    // Event listeners for buttons
+    prevScheduleButton.addEventListener('click', () => {
+    currentScheduleIndex = (currentScheduleIndex - 1 + scheduleTables.length) % scheduleTables.length;
+    showScheduleTable(currentScheduleIndex);
+    });
 
-// Initial display
-showCards(currentIndex);
+    nextScheduleButton.addEventListener('click', () => {
+    currentScheduleIndex = (currentScheduleIndex + 1) % scheduleTables.length;
+    showScheduleTable(currentScheduleIndex);
+    });
 
-// Event listeners for buttons
-prevButton.addEventListener('click', () => scrollCarousel(-1));
-nextButton.addEventListener('click', () => scrollCarousel(1));
-
-// Event listeners for dots
-dots.forEach((dot, index) => {
-  dot.addEventListener('click', () => {
-    currentIndex = index * cardsToShow;
-    showCards(currentIndex);
-  });
-});
+    // Event listeners for dots
+    scheduleDots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+        currentScheduleIndex = index;
+        showScheduleTable(currentScheduleIndex);
+    });
+    });
 
 
+// #endregion
 
 
+// #region Games
+
+
+    const gameContainer = document.getElementById("games-container");
+    const dotsContainer = document.getElementById("dotsContainer");
+    const prevBtn = document.getElementById("prev");
+    const nextBtn = document.getElementById("next");
+
+    let games = [...document.querySelectorAll(".games-card")];
+    let gameWidth = games[0].offsetWidth + 16; // Include the gap
+    let index = 0;
+    let isTransitioning = false;
+
+    let startX = 0;
+    let moveX = 0;
+    let threshold = 50; // Minimum swipe distance
+
+    // Centre the first game
+    function centreScroll() {
+        let viewportWidth = window.innerWidth;
+        let activeCard = games[index]; // Get the current active card
+
+
+        let activeCardWidth = activeCard.offsetWidth + (window.innerWidth * 0.2);
+
+        
+        let offset = (viewportWidth / 2) - (activeCardWidth / 2); // Perfect centre
+        let translateX = offset - (index * gameWidth);
+
+        gameContainer.style.transform = `translateX(${translateX}px)`;
+    }
+
+
+
+    // Create dots dynamically
+    function createDots() {
+        dotsContainer.innerHTML = "";
+        for (let i = 0; i < games.length; i++) {
+            let dot = document.createElement("div");
+            dot.classList.add("dot");
+            dotsContainer.appendChild(dot);
+        }
+        updateDots();
+    }
+
+    // Update dots and active card
+    function updateDots() {
+        let dots = document.querySelectorAll(".dot");
+
+        dots.forEach(dot => dot.classList.remove("active"));
+        dots[index]?.classList.add("active");
+
+        // Highlight the active game card
+        games.forEach(game => game.classList.remove("active-card"));
+        games[index]?.classList.add("active-card");
+    }
+
+    // Move function
+    function move(direction) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        if (direction === "next") {
+            index = (index + 1) % games.length;
+        } else {
+            index = (index - 1 + games.length) % games.length;
+        }
+
+        gameContainer.style.transition = "transform 0.4s ease-in-out";
+        centreScroll();
+
+        setTimeout(() => {
+            updateDots();
+            isTransitioning = false;
+        }, 400);
+    }
+
+
+    // Mouse wheel scroll (smooth horizontal movement)
+    let scrollTimeout;
+    document.addEventListener("wheel", (e) => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            move(e.deltaY > 0 ? "next" : "prev");
+        }, 100);
+    });
+
+    // Touch support (for mobile devices)
+    gameContainer.addEventListener("touchstart", (e) => {
+        startX = e.touches[0].clientX;
+    });
+
+    gameContainer.addEventListener("touchmove", (e) => {
+        moveX = e.touches[0].clientX - startX;
+    });
+
+    gameContainer.addEventListener("touchend", () => {
+        if (Math.abs(moveX) > threshold) {
+            move(moveX < 0 ? "next" : "prev");
+        }
+    });
+
+    // Button event listeners
+    nextBtn.addEventListener("click", () => move("next"));
+    prevBtn.addEventListener("click", () => move("prev"));
+
+    // Initialise
+    createDots();
+    centreScroll();
+
+// #endregion
