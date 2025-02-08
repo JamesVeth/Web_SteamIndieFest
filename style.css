@@ -255,6 +255,11 @@
         width: 80vw;
         position: relative;
         padding: 1rem 0;
+        cursor: pointer;
+        /* Create a mask fade effect */
+        -webkit-mask-image: linear-gradient(to right, transparent, black 30%, black 70%, transparent);
+        mask-image: linear-gradient(to right, transparent, black 30%, black 70%, transparent);
+        
     }
 
     #games-container {

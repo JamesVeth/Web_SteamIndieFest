@@ -61,6 +61,12 @@
 // #region Games
 
 
+    scrollContainer.addEventListener("wheel", (e) => {
+        e.preventDefault();  // Stop the page from scrolling
+        scrollContainer.scrollBy({ left: e.deltaY, behavior: "smooth" }); // Horizontal scroll
+    });
+
+
     const gameContainer = document.getElementById("games-container");
     const dotsContainer = document.getElementById("dotsContainer");
     const prevBtn = document.getElementById("prev");
@@ -90,6 +96,8 @@
         gameContainer.style.transform = `translateX(${translateX}px)`;
     }
 
+
+    
 
 
     // Create dots dynamically
