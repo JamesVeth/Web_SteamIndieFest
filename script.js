@@ -63,7 +63,6 @@
 
     scrollContainer.addEventListener("wheel", (e) => {
         e.preventDefault();  // Stop the page from scrolling
-        scrollContainer.scrollBy({ left: e.deltaY, behavior: "smooth" }); // Horizontal scroll
     });
 
 

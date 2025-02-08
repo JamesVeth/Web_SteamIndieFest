@@ -274,7 +274,7 @@
     .games-card h3,
     .games-card img,
     .games-card p {
-        margin-bottom: 10px; /* Adjust spacing */
+        margin-bottom: 0.11rem; /* Adjust spacing */
     }
 
     .games-card.active {
