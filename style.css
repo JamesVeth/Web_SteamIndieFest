@@ -341,12 +341,13 @@
 
 /* #region Schedule  */
 
-    .schedule-nav {
-        display: flex; /* Arrange buttons and dots in a row */
-        justify-content: center; /* Centre the content */
-        align-items: center; /* Vertically align items */
-    }
+    /* .schedule-nav {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
+    } */
 
+    
     .schedule-table {
         display: none;
         width: 80vw;
@@ -498,23 +499,17 @@
             }
 
         /* Section: Schedule */
-
+/* 
             .schedule-table {
                 display: block;
-            }
-
+            } */
+/* 
             #day-1, #day-2, #day-3 {
                 display: inline-block;
                 width: auto;
                 margin: 0 5%;
                 overflow-x: scroll;
-            }
-
-            .schedule-nav {
-                display: flex;
-                margin: 40px;
-                align-items: center; /* Center align the elements */
-            }
+            } */
 
     }
 /* #endregion */
