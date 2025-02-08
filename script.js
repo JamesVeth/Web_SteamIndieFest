@@ -61,9 +61,7 @@
 // #region Games
 
 
-    scrollContainer.addEventListener("wheel", (e) => {
-        e.preventDefault();  // Stop the page from scrolling
-    });
+
 
 
     const gameContainer = document.getElementById("games-container");
@@ -112,7 +110,10 @@
 
     // Update dots and active card
     function updateDots() {
-        let dots = document.querySelectorAll(".dot");
+        // let dots = document.querySelectorAll(".dot"); // This interferes with schedule dots
+
+        let dots = document.querySelectorAll("#dotsContainer .dot");
+
 
         dots.forEach(dot => dot.classList.remove("active"));
         dots[index]?.classList.add("active");
@@ -145,11 +146,15 @@
 
     // Mouse wheel scroll (smooth horizontal movement)
     let scrollTimeout;
-    document.addEventListener("wheel", (e) => {
+    scrollContainer.addEventListener("wheel", (e) => {
         clearTimeout(scrollTimeout);
         scrollTimeout = setTimeout(() => {
             move(e.deltaY > 0 ? "next" : "prev");
         }, 100);
+    });
+
+    scrollContainer.addEventListener("wheel", (e) => {
+        e.preventDefault();  // Stop the page from scrolling
     });
 
     // Touch support (for mobile devices)

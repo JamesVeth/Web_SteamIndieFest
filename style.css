@@ -203,8 +203,13 @@
 
 /* #endregion */
 
+/* 'region Home */
+    section#home{
 
+        text-align: center;
 
+    }
+/* #endregion */
 
 /* #region Sections (General) */
 
@@ -306,29 +311,25 @@
     }
 
     .dot {
+        box-shadow: 1px 2px 3px var(--shadow);
         display: inline-block;
-        height: 12px;
-        width: 12px;
+        height: 15px;
+        width: 15px;
         border-radius: 50%;
         border: var(--button-hover) solid 1.3px;
         background-color: var(--inactive-accent);
-        margin: 0 5px;
+        margin: 0.4rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
         cursor: pointer;
     }
 
     .dot.active {
         background-color: var(--active-accent);
-    }
+        box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
 
-    .games-nav {
-        display: flex; 
-        justify-content: center;
-        align-items: center; 
-        gap: 20px;
-        margin-top: 20px;
-    }
 
-/* New */
+    }
 
 
 
@@ -342,23 +343,18 @@
 
     .schedule-nav {
         display: flex; /* Arrange buttons and dots in a row */
-        margin: auto;
         justify-content: center; /* Centre the content */
         align-items: center; /* Vertically align items */
-        gap: 20px; /* Add spacing between buttons and the dots */
-        margin-top: 20px; /* Optional: Adjust spacing above/below the navigation */
     }
 
     .schedule-table {
         display: none;
         width: 80vw;
-        height: 50vh;
         padding: 20px;
         background-color: var(--background-1st);
         border: 1px solid var(--inactive-accent);
         border-radius: 8px;
         box-shadow: 0px 4px 10px var(--shadow);
-        margin-bottom: 40px;
     }
 
     .schedule-table table {
