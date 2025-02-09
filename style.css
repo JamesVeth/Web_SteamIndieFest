@@ -152,7 +152,9 @@
     }
 
     .navbar:hover {
-        background-color: var(--button-hover); 
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+        /* background-color: var(--button-hover);  */
     }
 
     .navbar ul {
@@ -189,7 +191,7 @@
         border-radius: 8px;
         text-decoration: none;
         font-size: 18px;
-        transition: background-color 0.3s ease, colour 0.3s ease;
+        transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     .navbar ul li a:hover {
