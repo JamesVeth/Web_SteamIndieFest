@@ -213,6 +213,10 @@
         text-align: center;
 
     }
+    
+    section#home p{
+     margin-top: 1rem;
+    }
 /* #endregion */
 
 /* #region Sections (General) */
