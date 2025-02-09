@@ -278,13 +278,19 @@
     }
 
     .games-card.active {
-        /* transform: scale(1.1); */
         box-shadow: 0 0 15px rgba(0, 255, 0, 0.7);
     }
 
     .games-card {
-        width: 400px;
-        height: 400px;
+
+        /* For later: Changing this width will break the current JS code for highlighting the center card */
+        
+        /* width: 400px;
+        height: 400px; */
+
+        width: 200px;
+        padding: 0.2rem;
+        
         padding: 1rem;
         flex-shrink: 0;
         text-align: center;
