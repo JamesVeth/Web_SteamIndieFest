@@ -102,6 +102,10 @@
 
 /* #region Buttons */
 
+    button, a {
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+    }
 
 
     .button-general {
@@ -154,8 +158,8 @@
     .navbar ul {
         position: fixed;
         top: 0;
-        left: -250px;
-        width: 250px;
+        left: -450px;
+        width: 450px;
         height: 100vh;
         background-color: var(--background-2nd);
         box-shadow: 4px 0 10px var(--shadow);
@@ -259,6 +263,7 @@
 
     #games-container {
         display: flex;
+        margin-top: 15px;
         flex-direction: row;
         gap: 1rem;
         width: max-content;
@@ -278,17 +283,17 @@
     }
 
     .games-card {
-        width: 200px;
-        padding: 0.2rem;
-        background-color:var(--background-1st);
-        color: var(--text_body);
-        text-align: center;
+        width: 400px;
+        height: 400px;
         padding: 1rem;
-        border: 1px solid var(--inactive-accent);
-        border-radius: 1rem;
         flex-shrink: 0;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+        border-radius: 1rem;
+        color: var(--text_body);
+        background-color:var(--background-1st);
+        border: 1px solid var(--inactive-accent);
         box-shadow: 0px 4px 10px var(--shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .games-card img{
@@ -330,6 +335,7 @@
     .schedule-table {
         display: none;
         width: 80vw;
+        margin-top: 15px;
         padding: 20px;
         background-color: var(--background-1st);
         border: 1px solid var(--inactive-accent);
@@ -378,7 +384,7 @@
         border-radius: 8px;
         border: 1px solid var(--inactive-accent);
         max-width: 500px;
-        margin: 20px auto;
+        margin-top: 15px;
         box-shadow: 0px 4px 6px var(--shadow);
     }
 
@@ -391,6 +397,7 @@
     }
 
     #register input, #contact input, #contact textarea {
+        font-family: 'MotivaSansRegular', Arial, sans-serif;
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -439,6 +446,12 @@
 
         /* #region Global */
    
+            .navbar ul {
+                position: fixed;
+                top: 0;
+                left: -100vw;
+                width: 100vw;
+            }
 
             #navlogo {
 
@@ -458,8 +471,9 @@
         /* #endregion */
 
         /* #region Games */
-            .games-card{
-                font-size: 0.8rem;
+            .games-card {
+                width: 200px;
+                padding: 0.2rem;
             }
 
             .games-card.active {
