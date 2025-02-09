@@ -12,7 +12,7 @@
         --text_active: #000000;
         --text_body: #ffffff;
 
-        --button-hover: #ffffff;
+        --button-hover: #ffffff46;
         --shadow: rgba(0, 0, 0, 0.5);
 
     }
@@ -88,14 +88,12 @@
     
     h2 {
         text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 40px;
+        font-size: 2rem;
     }
 
     h3 {
         text-align: center;
         font-size: 2rem;
-        margin-bottom: 20px;
     }
 
 /* #endregion */
@@ -131,6 +129,8 @@
 
 
 /* #region Navbar */
+
+
 
     .navbar {
         position: fixed;
@@ -245,14 +245,6 @@
 
 /* #region Games*/
 
-    /* section #games {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
-    } */
-
     #scrollContainer {
         overflow: hidden;
         width: 80vw;
@@ -314,7 +306,7 @@
         height: 15px;
         width: 15px;
         border-radius: 50%;
-        border: var(--button-hover) solid 1.3px;
+        border: var(--text_body) solid 1.3px;
         background-color: var(--inactive-accent);
         margin: 0.4rem;
         margin-top: 1rem;
@@ -329,22 +321,11 @@
 
     }
 
-
-
-
-
 /* #endregion */
   
 
 
 /* #region Schedule  */
-
-    /* .schedule-nav {
-        display: flex;
-        justify-content: center;
-        align-items: center; 
-    } */
-
     
     .schedule-table {
         display: none;
@@ -456,36 +437,61 @@
 
     @media (max-width: 600px) {
 
-        /* Section: Games */
+        /* #region Global */
+   
+
+            #navlogo {
+
+                width: 50px;
+                
+            }
+            
+            h2{
+                font-size: 1.3rem;
+            }
+
+            h3{
+                font-size: 1.4rem;
+            }
+
+
+        /* #endregion */
+
+        /* #region Games */
+            .games-card{
+                font-size: 0.8rem;
+            }
 
             .games-card.active {
                 display: flex;
                 flex-direction:column;
             }
             
-            .games-card.active img {
-                width: 90%;
-            }
 
             .games-nav {
                 display: flex;
                 margin: 20px;
-                align-items: center; /* Centre-align the elements */
-                gap: 8px; /* Space between elements */
+                align-items: center; 
+                gap: 8px; 
             }
 
             .dots-container {
                 display: flex;
-                justify-content: center; /* Center the dots horizontally */
-                gap: 5px; /* Space between dots */
+                justify-content: center; 
+                gap: 5px; 
             }
 
-        /* Section: Navbar */
+        /* #endregion */
+
+        /* #region Navbar */
+
             .navbar ul li a {
                 font-size: 1.5rem;
             }
+        
+        /* #endregion */
 
-        /* Section: Register */
+        /* #region Register */
 
             #register form, #contact form {
                 padding: 20px;
@@ -496,28 +502,43 @@
                 font-size: 1.1rem;
             }
 
-        /* Section: Schedule */
-/* 
+        /* #endregion */
+
+        /* #region Schedule */
+
             .schedule-table {
-                display: block;
-            } */
-/* 
-            #day-1, #day-2, #day-3 {
-                display: inline-block;
-                width: auto;
-                margin: 0 5%;
-                overflow-x: scroll;
-            } */
+                width: 90vw;
+                padding: 10px;
+            }
+
+            .schedule-table {
+                
+                font-size: 0.8rem;
+            }
+
+            .schedule-table td:first-child {
+                width: 50px;
+            }
+
+        /* #endregion */
+
+        /* #region register, contact */
+        #register input, #contact input, #contact textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 3px;
+            border-radius: 8px;
+        }
+
+            
+        /* #endregion */
 
     }
+
 /* #endregion */
 
 
 
 /* #region Media Query: Desktop (>700px) */
-    @media (min-width: 700px) {
-        #register form, #contact form {
-            width: 90vw;
-        }
-    }
+    
 /* #endregion */
