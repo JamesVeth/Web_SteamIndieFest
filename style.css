@@ -17,6 +17,7 @@
 
     }
 
+
 /* #endregion */
 
 /* #region Imported Fonts */
@@ -564,7 +565,175 @@
 /* #endregion */
 
 
+/* #region Media Query: Desktop (<500px) */
 
-/* #region Media Query: Desktop (>700px) */
+@media screen and (max-height: 700px) {
+
+        /* #region Global */
+   
+        .navbar ul {
+            position: fixed;
+            top: 0;
+            left: -100vw;
+            width: 100vw;
+        }
+
+
+
+        #navlogo {
+
+            width: 50px;
+            
+        }
+        #home p{
+            font-size: 0.8rem;
+        }
+        h2{
+            font-size: 0.8rem;
+        }
+
+        h3{
+            font-size: 0.7rem;
+        }
+        h1{
+            
+            font-size: 0.7rem;
+        }
+        
+        .dot{
+
+            height: 10px;
+            width: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        #games button, #schedule button{
+            max-height: 40px;
+            font-size: 0.7rem;
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
+        }
+
+
+
+    /* #endregion */
+
+    /* #region Games */
+        .games-card {
+            max-width: 200px;
+            max-height: 200px;
+            padding: 0.2rem;
+
+        }
+        .games-card img {
+
+            max-width: 140px;
+
+        }
+
+        .games-card p {
+
+            font-size: 0.4rem;
+
+        }
+
+        .games-card.active {
+            display: flex;
+            flex-direction:column;
+        }
+        
+
+        .games-nav {
+            display: flex;
+            margin: 20px;
+            align-items: center; 
+            gap: 8px; 
+        }
+
+        .dots-container {
+            display: flex;
+            justify-content: center; 
+            gap: 5px; 
+        }
+        
+
+
+    /* #endregion */
+
+    /* #region Navbar */
+
+        .navbar ul li a {
+            max-height: 70px;
+            font-size: 0.7rem;
+            padding-top: 0.6rem;
+            padding-bottom: 0.6rem;
+        }
+    
+    /* #endregion */
+
+    /* #region Register */
+
+        #register form, #contact form {
+            padding: 5px;
+            width: 90%;
+        }
+
+        #register button, #contact button {
+            font-size: 1.1rem;
+        }
+
+    /* #endregion */
+
+    /* #region Schedule */
+
+        .schedule-table {
+            width: 90vw;
+            padding: 5px;
+            font-size: 0.7rem;
+        }
+
+        .schedule-table td tr {
+            max-height: 20px;
+            padding-top: 0.6rem;
+            padding-bottom: 0.6rem;
+        }
+
+
+
+    /* #endregion */
+
+    /* #region register, contact */
+        #register input, #contact input  {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 3px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+
+        }
+
+        #register label, #contact label  {
+            font-size: 0.8rem;
+            margin-bottom: 3px;
+
+        }
+
+        #register button, #contact button{
+            max-height: 40px;
+            font-size: 0.7rem;
+            padding-top: 0.2rem;
+            padding-bottom: 0.2rem;
+        }
+
+        #contact textarea {
+            font-size: 0.8rem;
+            max-height: 3rem;
+            margin-bottom: 0%;
+        }
+        
+    /* #endregion */
+
+}
     
 /* #endregion */
