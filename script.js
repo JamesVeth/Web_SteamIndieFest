@@ -1,5 +1,14 @@
 // #region Navbar
 
+/* 
+    Topic: const navbar = document.querySelector('.navbar');
+
+    This looks for a class in the CSS file called '.navbar' and applies that style,
+    in this case is: .navbar.active ul { left: 0; } in CSS
+
+    Remember: if you want to change this, set left to 40px, 100px, etc, don't forget the px, else it won't work
+*/
+
     const navbar = document.querySelector('.navbar');
 
     navbar.addEventListener('click', () => {
@@ -12,46 +21,74 @@
 
 // #region Schedule
 
+
+/* 
+    Topic: querySelectorAll vs querySelector
+
+    querySelectorAll is to select all classes, for example
+    querySelector is to only select the very first class the interpreter sees, not the rest
+    Generally you should use all for classes and selector, or getElementByID's for individual id's
+*/
+
     const scheduleTables = document.querySelectorAll('.schedule-table');
     const scheduleDots = document.querySelectorAll('.schedule-nav .dot');
     const prevScheduleButton = document.getElementById('prev-schedule-button');
     const nextScheduleButton = document.getElementById('next-schedule-button');
 
-    let currentScheduleIndex = 0;
+/* 
+    Topic: querySelectorAll creates an array/NodeList
 
-    function showScheduleTable(index) {
-    scheduleTables.forEach(table => table.style.display = 'none');
-    scheduleTables[index].style.display = 'block';
+    querySelectorAll() in JavaScript does not return an array, but it returns a 
+    NodeList of DOM elements that match the specified selector(s). It is similar
+    to an array in functionality, but is technically not an array (it's actually a Class).
 
-    // Update active dot
-    updateActiveScheduleDot();
-    }
+*/
 
     function updateActiveScheduleDot() {
-    scheduleDots.forEach(dot => dot.classList.remove('active'));
-    scheduleDots[currentScheduleIndex].classList.add('active');
+    // Remove the CSS class styling from it, so it reverts back to a grey dot
+        scheduleDots.forEach(dot => dot.classList.remove('active')); 
+    // Apply this CSS class styling to the active dot to make it green colour
+        scheduleDots[currentScheduleIndex].classList.add('active'); 
     }
 
-    // Initial display
+    function showScheduleTable(index) { // Hide or show the current selected table
+
+        scheduleTables.forEach(table => table.style.display = 'none'); // start by hiding each table
+
+        scheduleTables[index].style.display = 'block'; // show the current table (set array index to block)
+
+        updateActiveScheduleDot(); // update the dot to reflect active table
+    }
+
+    // Starting Table / Dot
+    let currentScheduleIndex = 0;
     showScheduleTable(currentScheduleIndex);
 
-    // Event listeners for buttons
+
+    // Event click listeners for buttons and dots
+
     prevScheduleButton.addEventListener('click', () => {
-    currentScheduleIndex = (currentScheduleIndex - 1 + scheduleTables.length) % scheduleTables.length;
-    showScheduleTable(currentScheduleIndex);
+        // currentScheduleIndex - 1 ... Move back one step in the array
+        // + scheduleTables.length  ...  Even if the result is negative, adding .length makes it positive and wrap round, e.g: (0 - 1 + 3) = 3
+        // % scheduleTables.length  ... The modulus operator (%) ensures the index stays within bounds, 
+        // e.g. (1 - 1 + 3) % 3 = 1 
+        // 1 - 1 = 0
+        // 0 + 3 = 3
+        // 3 % 3 = 0
+        currentScheduleIndex = (currentScheduleIndex - 1 + scheduleTables.length) % scheduleTables.length;
+        showScheduleTable(currentScheduleIndex);
     });
 
     nextScheduleButton.addEventListener('click', () => {
-    currentScheduleIndex = (currentScheduleIndex + 1) % scheduleTables.length;
-    showScheduleTable(currentScheduleIndex);
-    });
-
-    // Event listeners for dots
-    scheduleDots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-        currentScheduleIndex = index;
+        currentScheduleIndex = (currentScheduleIndex + 1) % scheduleTables.length;
         showScheduleTable(currentScheduleIndex);
     });
+
+    scheduleDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentScheduleIndex = index;
+            showScheduleTable(currentScheduleIndex);
+        });
     });
 
 
@@ -59,8 +96,6 @@
 
 
 // #region Games
-
-
 
 
 
