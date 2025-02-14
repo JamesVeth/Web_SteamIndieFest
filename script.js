@@ -67,14 +67,20 @@
 
     // Event click listeners for buttons and dots
 
+/* 
+    Topic: currentScheduleIndex = (currentScheduleIndex - 1 + scheduleTables.length) % scheduleTables.length;
+
+    currentScheduleIndex - 1 ... Move back one step in the array
+    + scheduleTables.length  ...  Even if the result is negative, adding .length makes it positive and wrap round, e.g: (0 - 1 + 3) = 3
+    % scheduleTables.length  ... The modulus operator (%) ensures the index stays within bounds, 
+    e.g. (1 - 1 + 3) % 3 = 1 
+    0 o o (0 going to 2)
+    0 - 1 = -1 
+    -1 + 3 = 2
+    2 % 3 = 1
+*/
+
     prevScheduleButton.addEventListener('click', () => {
-        // currentScheduleIndex - 1 ... Move back one step in the array
-        // + scheduleTables.length  ...  Even if the result is negative, adding .length makes it positive and wrap round, e.g: (0 - 1 + 3) = 3
-        // % scheduleTables.length  ... The modulus operator (%) ensures the index stays within bounds, 
-        // e.g. (1 - 1 + 3) % 3 = 1 
-        // 1 - 1 = 0
-        // 0 + 3 = 3
-        // 3 % 3 = 0
         currentScheduleIndex = (currentScheduleIndex - 1 + scheduleTables.length) % scheduleTables.length;
         showScheduleTable(currentScheduleIndex);
     });
@@ -104,8 +110,17 @@
     const prevBtn = document.getElementById("prev");
     const nextBtn = document.getElementById("next");
 
+ /* 
+    Topic: ... spread operator
+
+    The spread syntax (...) is used to convert the NodeList 
+    returned by querySelectorAll into a proper array.
+
+    Here it's taking a NodeList, which is a class, and then assigning 
+    it to an actual array called games
+ */   
     let games = [...document.querySelectorAll(".games-card")];
-    let gameWidth = games[0].offsetWidth + 16; // Include the gap
+    let gameWidth = games[0].offsetWidth + 16; // Include the gap; this information is taken from the dom object
     let index = 0;
     let isTransitioning = false;
 
