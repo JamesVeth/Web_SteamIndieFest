@@ -148,7 +148,7 @@
     });
     
 
-    // Centre the first game
+    // Centre the cards and the container to as close to center as possible
     function centreScroll() {
         let viewportWidth = window.innerWidth;
         let activeCard = games[index]; // Get the current active card
@@ -159,21 +159,25 @@
     }
 
     // Create dots dynamically
+    // Basically get the size of our games array, which is a NodeList of our games-card html divs converted to an array
+    // create a dot thats an empty div
+    // inside that div add a class type to and stylise it in the CSS; they are just border-radius: 50% circles
+    // 
     function createDots() {
         dotsContainer.innerHTML = "";
         for (let i = 0; i < games.length; i++) {
             let dot = document.createElement("div");
             dot.classList.add("dot");
-            dotsContainer.appendChild(dot);
+            dotsContainer.appendChild(dot); // Add our dots to that empty html div container
         }
-        updateDots();
+        updateDots(); // update dots
     }
 
     // Update dots and active card
     function updateDots() {
         // let dots = document.querySelectorAll(".dot"); // This interferes with schedule dots
-
-        let dots = document.querySelectorAll("#dotsContainer .dot");
+        // this .dot was created in the createDots function; there is no .dot in the actual html file
+        let dots = document.querySelectorAll("#dotsContainer .dot"); 
         dots.forEach(dot => dot.classList.remove("active"));
         dots[index]?.classList.add("active");
         // Highlight the active game card
@@ -193,20 +197,22 @@
         // handle our string passed in arguments
         if (direction === "next") {
             // add 1 to index to move to the next card in the array
-            // divide 
-            index = (index + 1) % games.length;
+            // divide by length, return the remainder (if any) to place either at end or beginning 
+            index = (index + 1) % games.length; 
         } else { // instead of checking for "prev" just use an else, as it's a binary argument anyway
             index = (index - 1 + games.length) % games.length;
         }
 
+        // set the CSS transition style to ease in with 0.4s delay
         gameContainer.style.transition = "transform 0.4s ease-in-out";
         
+        // call our centrescroll function again
         centreScroll();
 
         setTimeout(() => {
-            updateDots();
-            isTransitioning = false;
-        }, 400);
+            updateDots(); // update the dynamic dots to repesent the current active game card
+            isTransitioning = false; // set isTransitioning back to false so it can be scrolled again
+        }, 400); // delay it by 400ms, so there is a slight delay between transitions
     }
 
 
