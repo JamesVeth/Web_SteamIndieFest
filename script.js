@@ -10,17 +10,14 @@
 */
 
     const navbar = document.querySelector('.navbar');
-
     navbar.addEventListener('click', () => {
         navbar.classList.toggle('active');
     });
-
 
 // #endregion
 
 
 // #region Schedule
-
 
 /* 
     Topic: querySelectorAll vs querySelector
@@ -97,6 +94,31 @@
         });
     });
 
+    /* 
+    Pseudo Code for Schedule Section:
+
+    Set variables
+    Set current table index to 0 starting
+
+    ** run show schedule table function:
+        show current table baed on index 0
+        set each table to 'none'/ invisible
+        set the table at current table index to 'block' / visible
+            run update schedule dots function:
+                pass current index to this function
+                remove each dot from a CSS class called 'active' and make them default style
+                add a CSS class (glowing green) to the dot that is at the passed in current index value
+
+    assign 2 event listeners: prev and next button clicks:
+        when either button is clicked:
+            increment/decrement the current table index 
+            ensure that the current table index stays within 0 to 2 
+            without using if statement, mathematically use modulo operator to loop back to the start / end
+            show current table based on current table index
+            run show schedule table function **
+        
+    */
+
 
 // #endregion
 
@@ -133,20 +155,6 @@
 
     // Mouse wheel scroll (smooth horizontal movement)
     let scrollTimeout; // create an id for timeout, this allows the timer to be stopped
-
-    // Apple an event listener when mouse is scrolling over the scrollContainer
-    scrollContainer.addEventListener("wheel", (e) => { // event is wheel type
-        clearTimeout(scrollTimeout); // start by clearing the previous timeout, ensuring only the most recent scroll is processed
-        scrollTimeout = setTimeout(() => { // for every 100ms, 
-            // store the scroll wheel's event properties in e
-            // event.deltaY stores the wheel's vertical amount
-            // if deltaY > 0 or if user scrolled downwards
-            // call the move function below and pass in a string of either "next" or "prev"
-            // This is known as "inline conditional argument passing", where the outcome of the parameter passed is dynamic
-            move(e.deltaY > 0 ? "next" : "prev"); 
-        }, 100);
-    });
-    
 
     // Centre the cards and the container to as close to center as possible
     function centreScroll() {
@@ -216,6 +224,20 @@
     }
 
 
+    // Apple an event listener when mouse is scrolling over the scrollContainer
+    scrollContainer.addEventListener("wheel", (e) => { // event is wheel type
+        clearTimeout(scrollTimeout); // start by clearing the previous timeout, ensuring only the most recent scroll is processed
+        scrollTimeout = setTimeout(() => { // for every 100ms, 
+            // store the scroll wheel's event properties in e
+            // event.deltaY stores the wheel's vertical amount
+            // if deltaY > 0 or if user scrolled downwards
+            // call the move function below and pass in a string of either "next" or "prev"
+            // This is known as "inline conditional argument passing", where the outcome of the parameter passed is dynamic
+            move(e.deltaY > 0 ? "next" : "prev"); 
+        }, 100);
+    });
+
+    // I can combine these 2 scrollContainer event listeners; don't need 2
 
     scrollContainer.addEventListener("wheel", (e) => {
         e.preventDefault();  // Stop the page from scrolling
@@ -246,6 +268,99 @@
 
 // #endregion
 
+/* 
+
+Pseudo Code for Games Section:
+
+Pseudo Code for Games Section:
+
+Set variables:
+
+start: create array to store the .games-card html class Nodelist
+start: assign variable to the width of the first card + offset
+start: set index to 0
+start: set istransitioning animation checker Boolean to false
+start: set touch controls: startX, moveX to 0 and threshold to 50
+start: assign a variable name to the timeout, so we can clear it by id
+
+start: call: creatDots Function
+start: call: centreScroll Function
+
+Event Listeners:
+
+scrollContainer => mouse wheel
+	e.preventDefault = stop page from scrolling when scrolling over
+	clear the timeout based on variable name we assigned at start
+	start a new timeout:
+		check the vertical delta, if scroll wheel vertical > 0
+			send "next" string to our move function
+			else send "prev" string to move function
+		pause for 100ms
+
+gameContainer => touchStart
+gameContainer => touchMove
+gameContainer => touchEnd
+
+	Note:
+	e.touches[0] = on touch screens, you can have multiple touches; 
+	e.touches[0] means the first touch registered
+
+	Why Do We Need All 3 touch Listeners?
+	touchstart → Saves the starting X position of the touch.
+	touchmove → Calculates how far the finger moves left or right.
+	touchend → Checks if the movement is big enough to trigger a swipe and moves the carousel.
+
+nextBtn => click: send "next" string to move function
+prevBtn => click: send "prev" string to move function
+
+Functions: In order of call
+
+CreateDots:
+	we have an empty html div called dotsContainer
+	do for loop, using games.length:
+		create games.length number of divs for each dot
+		add the CSS class styling to each dot
+		use dotsContainer.appendChild(dot); to actually append the dots to the html file
+	call the update dot function
+
+UpdateDots: 
+	This function requires the CreateDots to trigger first, 
+	CreateDots actually appends the dots to the html file
+	
+	create a NodeList called dots to store the dots using queryselectorAll
+	use a foreach on the NodeList to remove the CSS style class called 'active' making them all default styled
+		 
+	"dots[index]?.classList.add("active");"
+	^ This selects the dot at the current index
+	^ ?. is syntax for 'Optional Chaining' it Prevents errors if dots[index] is undefined
+	
+	Do the same thing for each element in our games array
+	Use a foreach on the array to remove a CSS styling called "active-card" so all cards are default styled
+	Again, use games[index]?.classList.add("active-card"); syntax to style the active game-card
+
+
+CentreScroll:
+	set viewportwidth to the actual viewport width dynamically
+	set activeCard to what is at games[current index]
+	set activecardwitdh = activeCard.offsetWidth + (window.innerWidth * 0.2);
+	let offset = (viewportWidth / 2) - (activeCardWidth / 2); = perfect center
+	^ Calculate the horizontal position for the centre game card
+	let translateX = offset - (index * gameWidth);
+	^ This sets the x offset starting location for the gamecontainer itself
+	^ This makes it so both the active card and the container itself are perfectly centred
+	gameContainer.style.transform = `translateX(${translateX}px)`;
+	^ send an inline CSS styling to our gameContainer class
+	^ `translateX(${translateX}px)`because we are sending an inline styling, we pass a template literal
+		
+
+Move:
+
+	
+
+
+
+
+*/
 
 
 
