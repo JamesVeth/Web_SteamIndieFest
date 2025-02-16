@@ -224,7 +224,7 @@
     }
 
 
-    // Apple an event listener when mouse is scrolling over the scrollContainer
+    // Apply an event listener when mouse is scrolling over the scrollContainer
     scrollContainer.addEventListener("wheel", (e) => { // event is wheel type
         clearTimeout(scrollTimeout); // start by clearing the previous timeout, ensuring only the most recent scroll is processed
         scrollTimeout = setTimeout(() => { // for every 100ms, 
@@ -354,12 +354,45 @@ CentreScroll:
 		
 
 Move:
+	Move accepts a string as a parameter argument, called direction
+	if: is in traveling animated state (Boolean == true)
+	^ if the string passed in === "next"
+		index = (index + 1) % games.length; 
+		else: the string is binary, so is likely "prev":
+		index = (index - 1 + games.length) % games.length;
 
+Note: Breakdown of 
+index = (index + 1) % games.length; 
+index = (index - 1 + games.length) % games.length;
+
+First we apply the calculation in brackets (index + 1)
+^ This is what we want: we want to increment or decrement our index when the buttons are presed, so we do this first
+^ We then divide this number by length
+
+Step-by-step breakdown of 1 % 3:
+Divide 1 by 3
+1 ÷ 3 = 0 remainder 1
+This means 3 goes into 1 zero times, and we are left with 1 that couldn't be divided further.
+That leftover part is the remainder, and that's what modulo returns. So 1 % 3 = 1.
+This is why 0 is NOT the remainder
+
+For prev, the reason we do +games.length in the parameter is because arrays can not go under 0
+If we set the index to -1 it would cause an array error
+So we +games.length to stay in the bounds of the array
+
+
+	gameContainer.style.transition = "transform 0.4s ease-in-out";
+	^ This sets the CSS style to an animation with 0.4s timing
 	
-
-
-
-
+	call: centreScroll function again **
+	^ Centre everything again
+	
+	create a timeout:
+		call: updateDots
+		^ apply our CSS class style to the new active dot / make others default styling
+		set isTransition BACL to false (true is to delay any other scrolls while it finishes animating)
+		set the delay to 400s, this stops rapid scrolling and keeps animation smooth
+	
 */
 
 
