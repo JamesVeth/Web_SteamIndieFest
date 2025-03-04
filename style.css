@@ -454,6 +454,54 @@
 
 /* #endregion */
 
+/* #region Footer */
+
+    /* Footer Section */
+    #footer {
+        height: auto !important; /* Overrides any height applied elsewhere */
+        min-height: fit-content; /* Ensures it takes only the space it needs */
+        background-color: #181a1b; /* Adjust as needed */
+        padding: 20px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* Footer Container */
+    .footercontainer {
+        display: grid;
+        grid-template-rows: auto auto; /* Two rows */
+        grid-template-columns: 1fr; /* Single column */
+        text-align: center;
+        width: 80%; /* Adjust width as needed */
+        max-width: 1200px;
+    }
+
+    /* First Row: Logo */
+    #imgfooterlogo {
+        width: 150px; /* Adjust size as needed */
+        margin: 0 auto;
+    }
+
+    /* Second Row: Footer Legal & Links */
+    #footerlegal, #footerlinks {
+        margin-top: 10px;
+    }
+
+    /* Footer Links: Centering */
+    #footerlinks {
+        display: flex;
+        justify-content: center;
+        gap: 15px; /* Space between links */
+        flex-wrap: wrap;
+    }
+
+    /* Social Icons */
+    #footerlinks img {
+        width: 20px; /* Adjust icon size */
+        height: auto;
+    }
+
+/* #endregion */
 
 
 /* #region Media Query: Mobile (<600px) */
