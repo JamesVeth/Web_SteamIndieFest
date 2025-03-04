@@ -12,7 +12,7 @@
         --text_active: #000000;
         --text_body: #ffffff;
 
-        --button-hover: #ffffff46;
+        --button-hover: #ffffff;
         --shadow: rgba(0, 0, 0, 0.5);
 
     }
@@ -118,7 +118,7 @@
         color: var(--text_body);
         border-radius: 50px;
         text-decoration: none;
-        transition: background-color 0.3s ease, colour 0.3s ease;
+        transition: background-color 0.3s ease, color 0.3s ease;
         width: auto; /* Prevent buttons from stretching full-width */
         padding: 10px 20px; 
         font-size: 16px; 
@@ -458,48 +458,58 @@
 
     /* Footer Section */
     #footer {
-        height: auto !important; /* Overrides any height applied elsewhere */
-        min-height: fit-content; /* Ensures it takes only the space it needs */
-        background-color: #181a1b; /* Adjust as needed */
+        height: auto !important; 
+        min-height: fit-content;  
         padding: 20px 0;
-        display: flex;
-        justify-content: center;
+        background: none;
+        background-color: #181a1b;  
     }
 
-    /* Footer Container */
     .footercontainer {
         display: grid;
-        grid-template-rows: auto auto; /* Two rows */
-        grid-template-columns: 1fr; /* Single column */
-        text-align: center;
-        width: 80%; /* Adjust width as needed */
-        max-width: 1200px;
-    }
-
-    /* First Row: Logo */
-    #imgfooterlogo {
-        width: 150px; /* Adjust size as needed */
-        margin: 0 auto;
-    }
-
-    /* Second Row: Footer Legal & Links */
-    #footerlegal, #footerlinks {
-        margin-top: 10px;
-    }
-
-    /* Footer Links: Centering */
-    #footerlinks {
-        display: flex;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto 1fr auto;
         justify-content: center;
-        gap: 15px; /* Space between links */
-        flex-wrap: wrap;
+        align-items: center;
+        text-align: center;
+        max-width: 1200px;
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        padding-inline: 5rem;
     }
 
-    /* Social Icons */
-    #footerlinks img {
-        width: 20px; /* Adjust icon size */
-        height: auto;
+    #imgfootervalvelogo, #imgfootersteamlogo {
+        height: 30px;
     }
+
+    #footerlegal {
+        padding: 0 15px;
+    }
+
+    #footerlinks {
+        grid-column: 1 / -1;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    #footerlinks a {
+        text-decoration: none;
+        color: var(--text_body);
+    }
+
+    #footerlinks a img {
+        height: 20px;
+        width: auto;
+    }
+
+
+    #footerlinks a img {
+        height: 20px;
+        width: auto;
+    }
+
 
 /* #endregion */
 
@@ -507,6 +517,10 @@
 /* #region Media Query: Mobile (<600px) */
 
     @media (max-width: 600px) {
+
+            #footer{
+                display: none;
+            }
 
         /* #region Global */
    
@@ -532,6 +546,12 @@
             }
 
 
+        /* #endregion */
+
+        /* #region Home */
+        #home button{
+            margin-bottom: 1rem;
+        }
         /* #endregion */
 
         /* #region Games */
@@ -659,7 +679,7 @@
             margin-bottom: 5px;
         }
 
-        #games button, #schedule button{
+        #games button, #schedule button, #home button{
             max-height: 40px;
             font-size: 0.7rem;
             padding-top: 0.2rem;
