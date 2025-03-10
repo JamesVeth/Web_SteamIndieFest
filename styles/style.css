@@ -494,10 +494,12 @@
     }
 
     #footerlegal {
+        font-size: 0.9rem;
         padding: 0 15px;
     }
-
+    
     #footerlinks {
+        font-size: 0.9rem;
         grid-column: 1 / -1;
         display: flex;
         justify-content: space-between;
