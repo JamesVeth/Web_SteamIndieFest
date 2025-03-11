@@ -690,9 +690,12 @@
         }
 
         #home #homeLogo{
-            width: 40%;
+            width: 70%;
+            margin-top: 0.1rem;
+
         }
         #home p{
+            display: none;
             margin-top: 0.1rem;
             font-size: 0.8rem;
         }
