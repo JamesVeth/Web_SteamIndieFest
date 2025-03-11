@@ -221,9 +221,11 @@
 
 /* 'region Home */
     section#home{
-
         text-align: center;
+    }
 
+    section #homeLogo{
+        width: 50vw;
     }
     
     section#home p{
@@ -529,10 +531,14 @@
 
 /* #region Media Query: Mobile (<600px) */
 
-    @media (max-width: 600px) {
+    @media screen and (max-width: 600px) {
 
             #footer{
                 display: none;
+            }
+
+            section p{
+                text-align: center;
             }
 
         /* #region Global */
@@ -546,7 +552,10 @@
 
             #navlogo {
 
-                width: 50px;
+                position: absolute;
+                left: 1rem;
+                bottom: 1rem;
+                width: 60px;
                 
             }
             
@@ -562,9 +571,16 @@
         /* #endregion */
 
         /* #region Home */
-        #home button{
-            margin-bottom: 1rem;
-        }
+
+            #home button{
+                margin-bottom: 1rem;
+            }
+
+            #home #homeLogo{
+                width: 60%;
+            }
+
+
         /* #endregion */
 
         /* #region Games */
@@ -666,10 +682,18 @@
 
         #navlogo {
 
-            width: 50px;
+            position: absolute;
+            left: 1rem;
+            bottom: 1rem;
+            width: 60px;
             
         }
+
+        #home #homeLogo{
+            width: 40%;
+        }
         #home p{
+            margin-top: 0.1rem;
             font-size: 0.8rem;
         }
         h2{
@@ -698,8 +722,6 @@
             padding-top: 0.2rem;
             padding-bottom: 0.2rem;
         }
-
-
 
     /* #endregion */
 
@@ -782,8 +804,6 @@
             padding-top: 0.6rem;
             padding-bottom: 0.6rem;
         }
-
-
 
     /* #endregion */
 
