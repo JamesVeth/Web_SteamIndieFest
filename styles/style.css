@@ -533,7 +533,7 @@
 
 /* #region Media Query: Mobile (<600px) */
 
-    @media screen and (max-width: 600px) { /* Mobile (<600px) */
+    @media screen and (max-width: 600px) { /* Mobile (max width < 600px) */
 
             #footer{
                 display: none;
@@ -667,9 +667,9 @@
 /* #endregion */
 
 
-/* #region Media Query: Tablet (height <700px) */
+/* #region Media Query: Tablet (height <650px) */
 
-@media screen and (max-height: 650px) { /* Tablet (height <700px) */
+@media screen and (max-height: 650px) { /* Tablet (max height < 650px) */
 
 
     /* #region Navbar */
