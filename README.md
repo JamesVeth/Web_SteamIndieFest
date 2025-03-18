@@ -1,5 +1,5 @@
 # [Steam Indie Fest Festival Website](https://github.com/JamesVeth)
-# <small>By: James Vethamony.</small> 
+
 ## Table of Contents
 - [About](#about)
 - [Features](#features)
