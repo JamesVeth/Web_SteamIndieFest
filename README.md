@@ -1,4 +1,4 @@
-# [Steam Indie Fest Festival Website](https://github.com/JamesVeth)
+# [Steam Indie Fest Festival Website](https://github.com/JamesVeth/Web_SteamIndieFest)
 
 ## Table of Contents
 - [About](#about)
