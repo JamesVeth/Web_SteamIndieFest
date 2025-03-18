@@ -21,7 +21,7 @@ This project is a web application created to showcase indie games featured on St
 
 ## Technologies Used
 - HTML, CSS, JavaScript
-- Node.js (In the future) for backend registration and contact form processing
+- Node.js, Formspree and Supabase (In the future) for backend registration and contact form processing
 
 ## Setup
 To set up the project locally, follow these steps:
