@@ -146,8 +146,6 @@
 
 /* #region Navbar */
 
-
-
     .navbar {
         position: fixed;
         top: 0;
@@ -215,8 +213,12 @@
         max-width: 100%;
         max-height: 100%;
         object-fit: contain;
+        height: 150px;  
+
     }
 
+
+    
 /* #endregion */
 
 /* 'region Home */
@@ -225,7 +227,7 @@
     }
 
     section #homeLogo{
-        width: 50vw;
+        width: 40vw;
     }
     
     section#home p{
@@ -531,7 +533,7 @@
 
 /* #region Media Query: Mobile (<600px) */
 
-    @media screen and (max-width: 600px) {
+    @media screen and (max-width: 600px) { /* Mobile (<600px) */
 
             #footer{
                 display: none;
@@ -665,12 +667,13 @@
 /* #endregion */
 
 
-/* #region Media Query: Desktop (<500px) */
+/* #region Media Query: Tablet (height <700px) */
 
-@media screen and (max-height: 700px) {
+@media screen and (max-width: 375px) and (max-height: 700px) { /* Tablet (height <700px) */
 
-        /* #region Global */
-   
+
+    /* #region Navbar */
+
         .navbar ul {
             position: fixed;
             top: 0;
@@ -678,27 +681,52 @@
             width: 100vw;
         }
 
-
-
         #navlogo {
-
             position: absolute;
             left: 1rem;
             bottom: 1rem;
             width: 60px;
-            
         }
 
+        .navbar ul li {
+            margin: 4px 0;
+            padding: 0; 
+        }
+
+        .navbar ul li a {
+            max-height: 70px;
+            font-size: 0.8rem;
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        .navbar img {
+            max-height: none;  /* Remove max-height */
+            height: 80px;  
+        }
+
+    
+    /* #endregion */
+
+    /* #region Home */
+
         #home #homeLogo{
-            width: 70%;
+            width: 50%;
             margin-top: 0.1rem;
 
         }
+        
         #home p{
             display: none;
             margin-top: 0.1rem;
             font-size: 0.8rem;
         }
+
+    /* #endregion */
+
+    /* #region Global */
+   
+
         h2{
             font-size: 0.8rem;
         }
@@ -770,16 +798,7 @@
 
     /* #endregion */
 
-    /* #region Navbar */
 
-        .navbar ul li a {
-            max-height: 70px;
-            font-size: 0.7rem;
-            padding-top: 0.6rem;
-            padding-bottom: 0.6rem;
-        }
-    
-    /* #endregion */
 
     /* #region Register */
 
