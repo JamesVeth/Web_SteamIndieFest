@@ -1,6 +1,5 @@
-# Steam Indie Fest Festival Website
-# By James Vethamony [https://github.com/JamesVeth/Web_SteamIndieFest](https://github.com/JamesVeth/Web_SteamIndieFest)
-
+# [Steam Indie Fest Festival Website](https://github.com/JamesVeth)
+# <small>By: James Vethamony.</small> 
 ## Table of Contents
 - [About](#about)
 - [Features](#features)
