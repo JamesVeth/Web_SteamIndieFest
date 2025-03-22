@@ -55,3 +55,4 @@ To set up the project locally, follow these steps:
 
 ## Author
 Created by James Vethamony [https://github.com/JamesVeth](https://github.com/JamesVeth).
+
